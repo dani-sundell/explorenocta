@@ -334,7 +334,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
                 </p>
               </template>
 
-              <template #decision--1 v-if="!haveHarbormasterKey"><div @click="showFishModuleLocked()" class="module--decision--type type--uppercase--small">Try to get the paper</div></template>
+              <template #decision--1 v-if="!haveHarbormasterKey"><div @click="showFishModuleLocked()" class="module--decision--type type--uppercase--small">Reach inside its mouth</div></template>
 
               <template #decision--2><div @click="hideModule" class="module--decision--type type--uppercase--small">leave</div></template>
               
@@ -437,7 +437,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
         viewBox="0 0 5082 2250" 
         v-show="lighthouseNoFade" 
         key="lighthouseNoFade">
-          <image width="5082" height="2250" xlink:href="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/lake.png"></image>
+          <image width="5082" height="2250" xlink:href="https://dani-sundell.github.io/explore-nocta/imgs/lake.png"></image>
         </svg>
         </transition>
 
@@ -450,7 +450,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
         viewBox="0 0 5082 2250" 
         v-show="lighthouseFade" 
         key="lighthouseFade">
-          <image width="5082" height="2250" xlink:href="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/lake.png"></image>
+          <image width="5082" height="2250" xlink:href="https://dani-sundell.github.io/explore-nocta/imgs/lake.png"></image>
         </svg>
         </transition>        
 
@@ -463,7 +463,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
         height="100%" 
         viewBox="0 0 5082 2250" 
         opacity="1">
-            <image width="5082" height="2250" xlink:href="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/lighthouse-fade.jpg" opacity="0"></image>
+            <image width="5082" height="2250" xlink:href="https://dani-sundell.github.io/explore-nocta/imgs/lake.png" opacity="0"></image>
             
             <!-- boat -->
 
@@ -474,7 +474,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
 
             <!-- buoy -->
 
-            <rect x="3350" y="1070" fill="#eeff44" opacity="0" width="170" height="170"
+            <rect x="3870" y="1130" fill="#eeff44" opacity="0" width="170" height="170"
             @mouseover="handleCursorHover(true)" 
             @mouseleave="handleCursorHover(false)"
             @click="showBuoyModule"> 
@@ -482,7 +482,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
 
             <!-- footprints -->
 
-            <rect x="1290" y="1840" fill="#eeff44" opacity="0" width="220" height="220" @mouseover="handleCursorHover(true)" 
+            <rect x="1300" y="1760" fill="#eeff44" opacity="0" width="220" height="220" @mouseover="handleCursorHover(true)" 
             @mouseleave="handleCursorHover(false)"
             @click="showFootprintsModule"> 
             </rect>

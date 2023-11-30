@@ -11,26 +11,59 @@
   - 🤖 QA setting, Change for build
 
   TO-DOs:
-  ⬛️ Revise Splash page
+  ☑️ Write splash page intro
+  ☑️ Write all Journal entries
+
+  ⬛️ Implement content for Woods
+      ⬛️ Unlocked woods
+      ⬛️ Cabin intro
+      ⬛️ Witch intro
+      ⬛️ Witch quiz (x4 questions)
+      ⬛️ End scene
+  ⬛️ Finish Woods JS chain
+  
+  ⬛️ Fix mobile cpastone 
+  ⬛️ add contact info to credits
+
+  
+  ☑️ Fix anchor divider illio
+  ☑️ Revisie lake illustration
+      ☑️ Footprints and bouy on Lake
+  ☑️ Revisie town illustration
+      ☑️ Newspaper on Town
+  ☑️ Revisie woods illustration
+  ☑️ Upload new illustrations
+  ⬛️ Swap out MCAD hosted images
+
+  ------------- completed -------------
+
+    ☑️ Implement content for Town
+      ☑️ Manor flr 2
+      ☑️ Manor study
+      ☑️ Manor study wall
+      ☑️ Manor chest locked
+      ☑️ Manor chest unlocked
+      ☑️ letters (x2)
+      ☑️ map (need a plot reason for this)
+      ☑️ Graves
+  ☑️ Finish Town JS chain
+  
+
+  ☑️ Revise Splash page
       ☑️ Main page 
       ☑️ Links
       ☑️ Disclaimer Page
       ☑️ Intro Page
-      ⬛️ Fix anchor divider illio
       ☑️ Add button sound effects
       ☑️ Music
   ☑️ Add Credits Page
-  ⬛️ Finish Woods JS chain
   ☑️ Implement content for remaining Lighthouse chain
   ☑️ Implement content for Lake
-  ⬛️ Implement content for Town
-  ⬛️ Implement content for Woods
-  ⬛️ Migrate to W3 hosting
+  ☑️ Migrate to W3 hosting
 
 
   JOURNAL TO-DOs:
   ⬛️ Add mute journal button
-  ⬛️ Properly write out the journal entries
   ☑️ Journal entries from all areas (Add to new journal CSS)
   ☑️ Journal entry completed CSS
   ☑️ Make sure journal notifs only fire once (working example on sendSeenBoatTrigger)
@@ -39,12 +72,11 @@
  
   LOWER PRIORITY TO-DOs:
   ☑️ Add graveyard interaction (div in module with flexbox and grave icons for each that pop open a v-if)
-  ⬛️ Adjust Lara interaction to Puzzle script
+  ☑️ Adjust Lara interaction to Puzzle script
   ⬛️ Add new sounds
-  ⬛️ Adjust illustrations
-    ⬛️ Golden color on Lighthouse
-    ⬛️ Newspaper on Town
-    ⬛️ Footprints and bouy on Lake
+  ⬛️ New illustration for the gallery wall (I don't have time to add this but it would be cool)
+  ☑️ Adjust illustrations
+    ☑️ Golden color on Lighthouse
 
  
     REMINDERS:
@@ -152,13 +184,13 @@ import ContentModalX from '@/components/ContentModalX.vue'
 
                             <div class="journal--entry" v-if="journalEntryGraveyard" :class="{ strikethrough: journalEntryKeyItemChestKey }">
                               <p class="journal--entry--title">
-                                The Church
+                                The Graveyard
                               </p>
                               <p class="journal--entry--body" v-if="journalEntryKeyItemChestKey">
-                                You got something from the headstone
+                                You used the dagger on Lucien's grave and discovered a key hidden within.
                               </p>
                               <p class="journal--entry--body">
-                                You found a strange headstone
+                                You searched the graveyard and found Lucien Duguay's headstone. There was an interesting indent carved into the stone. 
                               </p>
                             </div>
 
@@ -168,10 +200,10 @@ import ContentModalX from '@/components/ContentModalX.vue'
                               </p>
                               
                               <p class="journal--entry--body" v-if="journalEntryUnlockedChest">
-                                You unlocked the chest and discoveed the truth about Nocta.
+                                You unlocked the chest and discovered a stash of old letters all addressed to a "Mr. Duguay". The letters mentioned marks in the woods you could follow to a "Ms. Falker's" house.
                               </p>
                               <p class="journal--entry--body" v-if="journalEntryLockedChest">
-                                You discovered a locked chest behind a painting. Now to get it open.
+                                You discovered a locked chest behind a painting. Now you'll need to get it open.
                               </p>
                               <p class="journal--entry--body" v-if="sendVisitedStudy">
                                 You found someone's old study. What could be hiding here? 
@@ -184,10 +216,10 @@ import ContentModalX from '@/components/ContentModalX.vue'
                               </p>
                               
                               <p class="journal--entry--body" v-if="journalEntryKeyItemDagger" >
-                                Lara gave you the dagger in her chest.
+                                Lara <i>graciously</i> gave you the dagger in her chest upon your request.
                               </p>
                               <p class="journal--entry--body" v-if="journalEntryLaraPaintingHint">
-                                You met Lara and she said something to you.
+                                You met Lara in the bedroom. She had little to say but a few mumbled lines about "the water".
                               </p>
                               <p class="journal--entry--body">
                                 You unlocked the bedroom. You should try to find something useful inside. 
@@ -199,10 +231,10 @@ import ContentModalX from '@/components/ContentModalX.vue'
                                 The Manor: First Floor
                               </p>
                               <p class="journal--entry--body" v-if="journalEntryBedroomKey">
-                                You found a key in the greenhouse.
+                                Just as the memo said, you found a key in the greenhouse.
                               </p>
                               <p class="journal--entry--body">
-                                Find the key to the Lady's Quarters.
+                                You saw a memo from the housekeeper in the dining room about keys for the "Lady's chambers".
                               </p>
                             </div>
 
@@ -211,14 +243,14 @@ import ContentModalX from '@/components/ContentModalX.vue'
                                   The docks
                                 </p>
                               <p class="journal--entry--body" v-if="journalEntryBoatKey">
-                                  You unlocked the building and got a key.
+                                  You opened the harbormaster shed and retrieved a key. You wonder what it goes to.
                                 </p>
                               <p class="journal--entry--body">
-                                  You found a shed by the docks, you should open it.
+                                  There was a locked harbormaster shed with a key on the wall. You should try to get inside. 
                                 </p>
                               <p class="journal--entry--body" v-if="journalEntrySeenFishStatue">
-                                  You saw a statue by the docks with a fish on it. 
-                                </p>
+                                  A statue on the docks depicted a cherished local fauna: The Night Salmon
+                              </p>
                             </div>
 
                       </div>
@@ -234,13 +266,13 @@ import ContentModalX from '@/components/ContentModalX.vue'
                               the lighthouse
                           </p>
                           <p class="journal--entry--body" v-if="journalEntrySpyglass">
-                              You saw something in a spyglass.
+                              Looking through a spyglass at the top of the headlight, you saw something in the middle of the lake that someone wants you to visit.
                           </p>
                           <p class="journal--entry--body" v-if="journalEntryKraver">
-                              You found an awful scene at the top of the lighthouse.
+                              The top of the lighthouse was inhabited by a hungry entity that wanted to know if you'd seen "her". 
                           </p>
                           <p class="journal--entry--body" v-if="journalEntryLighthouse">
-                              You found a locked lighthouse, you should try to open it.
+                              The lighthouse door looks like it could open, if you knew the code to the four-letter padlock. 
                           </p>
                         </div>
 
@@ -250,13 +282,13 @@ import ContentModalX from '@/components/ContentModalX.vue'
                               The keeper's house
                           </p>
                           <p class="journal--entry--body" v-if="journalEntryNewspaper">
-                              You found a newspaper
+                              You found an old newspaper discussing shipwrecks in the lake, apparently orchestrated by something called "Nina".
                           </p>
                           <p class="journal--entry--body" v-if="journalEntryJournal">
-                              You found a journal
+                              You found a journal penned by the lighthouse keeper's apprentice.
                           </p>
                           <p class="journal--entry--body" v-if="journalEntryKnife">
-                              You found a Knife
+                              You found a knife inside the old keeper's house. Could be useful to have.
                           </p>
                         </div>
 
@@ -272,13 +304,13 @@ import ContentModalX from '@/components/ContentModalX.vue'
 
                             <div class="journal--entry" v-if="journalEntryFish" :class="{ strikethrough: journalEntryHarbormasterKey }">
                           <p class="journal--entry--title">
-                              Stuffed Fish
+                              Black Fish
                             </p>
                             <p class="journal--entry--body" v-if="journalEntryHarbormasterKey">
-                                You used your knife and found a key inside the fish.
+                                With the help of your knife, you retrieved a key from inside the fish. Now to discover what the key unlocks.
                               </p>
                           <p class="journal--entry--body">
-                              You found a fish with something lodged in its mouth.
+                              Among a barrel of rotten fish, you noticed a glint inside one of their mouths. There seems to be something stuck inside its gullet.
                             </p>
                         </div>
 
@@ -296,7 +328,7 @@ import ContentModalX from '@/components/ContentModalX.vue'
                             </p>
                         </div>
 
-                        <!-- Bouy Entry 🛟 -->
+                        <!-- Buoy Entry 🛟 -->
 
                         <div class="journal--entry" v-if="journalEntrySeenBouy" :class="{ strikethrough: journalEntryWordsForLara }">
                           <p class="journal--entry--title">
@@ -306,10 +338,10 @@ import ContentModalX from '@/components/ContentModalX.vue'
                               The lake structure was a memorial for someone called the "Lady of the Lake"
                             </p>
                           <p class="journal--entry--body" v-if="journalEntrySpyglass">
-                              You saw that through the spyglass
+                              After peering through the spyglass, you believe this is the structure you need to get to.
                             </p>
                           <p class="journal--entry--body">
-                            There's something strange floating on the water, but you can't see what it is
+                            There's something strange floating on the water, but you can't see what it is from the shoreline.
                           </p>
                         </div>
                       </div>
@@ -323,8 +355,11 @@ import ContentModalX from '@/components/ContentModalX.vue'
                           <p class="journal--entry--title">
                               Dark Paths
                             </p>
+                          <p class="journal--entry--body" v-if="journalEntryUnlockedChest">
+                              Thanks to the letter you saw in the Manor, you can now follow the trail of symbols carved into the trees.
+                            </p>
                           <p class="journal--entry--body">
-                              You found the entrance to the woods, but you should find a map before you wander into them.
+                              You found the entrance to the woods, but you should know where you're going before you wander into them.
                             </p>
                         </div>
                       </div>
@@ -340,62 +375,6 @@ import ContentModalX from '@/components/ContentModalX.vue'
                         </p>
                     </div>
                   </div>
-
-                        <!-- 
-                          
-                          Journal Entries 
-                            
-                          Splash
-                            1. This is in journal to begin with 
-                              - Key objective to find friend ✏️
-                              - Key points of the letter (idk what the letter will say) 📖
-                              - Explore the strange town ✏️
-
-                          Lighthouse
-                            1. Open the Lighthouse 💡
-                              2. After hitting "run" on last modal:
-                                - Found scary guy 📖
-                                - Try to get to the thing you saw in the spyglass 🔎 ✏️
-                                - Done with lighthouse 🖋️
-                            3. Explored the house 🏚️ (if all three are true, fire, 🖋️ completes this block)
-                              - Learned about nina 📖
-                              - Learned about Falker 📖
-                              - 'Find a use for the knife' 🔪 ✏️
-                          
-                          Lake
-                            1. Get paper out of fish 🐟 ✏️
-                              2. "figure out where this key goes" ✏️ 🖋️ (completes 🔪)
-                            3. Get the boat working 🛶 ✏️
-                              4. After last boat modal
-                                  - Got the boat working 🖋️ (completes ⛴️ & 🛶)
-                                  - Found words on the buoy 📖 🖋️ (completes 🛟 & 🔎)
-                            5. Buoy 🛟 
-                              - If seen spyglass, "try to get to the buoy" ✏️
-                                OR If not, "try to get a better look at the thing" ✏️
-                          
-                          Town
-                            Docks ⛴️
-                            1. 'Open harbormaster building' ✏️ `
-                              2. 'Unlocked building, Use the key' ✏️ (completes 🐟 🖋️)
-                            3. 'Saw weird fish statue salmo noctem' 📖
-                            Church 🪦
-                            4. 'what do with strange headstone' ✏️
-                              5. 'Use the chest key from the headstone' ✏️
-                            Manor 🏠
-                            - dining room (if not seen bedroom) 
-                              6. 'find lady's quarter's key' 👗🗝️ ✏️ (⚔️ 2 ways to trigger)
-                            - greenhouse
-                              7. 'use the key we found' ✏️
-                            - bedroom 👗 
-                              - 1st visit see 👗🗝️ above (⚔️ 2 ways to trigger)
-                              8. (when unlocked) 'discover secrets of the lady's chambers' ✏️
-                              - 'lara is saying some crazy shit' 📖
-                              - 'Got the dagger from Lara' 📖 (🖋️ completes 👗)
-                            - study 📚
-                              9. 'discover secrets of the study' 📚 ✏️
-                              10. 'open the chest in the study' 📚 ✏️
-                              - 'Found stuff in the study'📖 🖋️  (completes 📚)
-                        -->
                 </div>
               </div>
           </transition>
@@ -1040,6 +1019,8 @@ export default {
     sendVisitedDiningRoomTrigger() { /* 🤝 Dependency - sets this variable in App to true */
       if (this.sendVisitedDiningRoom == false) {
         this.sendVisitedDiningRoom = true
+        this.journalNotifDotTown = true
+        this.journalNotifDelay()
       } else {
         return
       }

@@ -362,11 +362,11 @@ import PuzzleScript from '../components/PuzzleScript.vue'
               <template #body--content--2>
               </template>
 
-              <template #decision--1 v-if="lighthouseGuessCorrect"><div @click="showNoticeModule(true)" class="module--decision--type type--uppercase--small">enter the lighthouse</div></template>
+              <template #decision--1></template>
 
-              <template #decision--2><div @click="hideModule" class="module--decision--type type--uppercase--small">leave</div></template>
+              <template #decision--2></template>
               
-              <template #decision--3><div class="module--decision--type type--uppercase--small">give up</div></template>
+              <template #decision--3></template>
 
           </ContentModal>
         </transition>
@@ -597,7 +597,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             :renderBigImg="true"
             :renderInlineImg="false"
             :renderHeadline="false"
-            bigImg="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/wood.jpg"
+            bigImg="https://dani-sundell.github.io/explore-nocta/imgs/danger.png"
             inlineImg="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/notice.jpg"
             :renderDecision1="false"
             :renderDecision2="false"
@@ -634,7 +634,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
         viewBox="0 0 5082 2250" 
         v-show="lighthouseNoFade" 
         key="lighthouseNoFade">
-          <image width="5082" height="2250" xlink:href="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/lighthouse-no-fade.jpg"></image>
+          <image width="5082" height="2250" xlink:href="https://dani-sundell.github.io/explore-nocta/imgs/lighthouse.png"></image>
         </svg>
         </transition>
 
@@ -647,7 +647,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
         viewBox="0 0 5082 2250" 
         v-show="lighthouseFade" 
         key="lighthouseFade">
-          <image width="5082" height="2250" xlink:href="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/lighthouse-fade.jpg"></image>
+          <image width="5082" height="2250" xlink:href="https://dani-sundell.github.io/explore-nocta/imgs/lighthouse.png"></image>
         </svg>
         </transition>        
 
@@ -660,7 +660,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
         height="100%" 
         viewBox="0 0 5082 2250" 
         opacity="1">
-            <image width="5082" height="2250" xlink:href="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/lighthouse-fade.jpg" opacity="0"></image>
+            <image width="5082" height="2250" xlink:href="https://dani-sundell.github.io/explore-nocta/imgs/lighthouse.png" opacity="0"></image>
             
             <!-- headlight -->
 

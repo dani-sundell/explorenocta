@@ -128,6 +128,14 @@ main {
   letter-spacing: .05em;
 }
 
+blockquote {
+  display: block;
+  margin: 1rem 0 1rem 2rem;
+  padding: 0 2rem;
+  border-width: 0 0 0 2px;
+  border-style: solid;
+  border-color: var(--gold);
+}
 
 i {
   font-family: proxima-nova,sans-serif;
@@ -137,8 +145,7 @@ i {
 
 b {
   font-family: proxima-nova,sans-serif;
-  font-weight: 700;
-  font-style: normal;
+  font-weight: 500;
 }
 
 a {
@@ -188,6 +195,7 @@ a:link, a:visited {
 .type--reaction {
   color: var(--gold);
   font-size: 2.5rem;
+  line-height: 3rem;
   font-style: italic;
   padding: .5rem 0 1rem 0;
   text-align: center;
@@ -208,6 +216,25 @@ a:link, a:visited {
 .strikethrough {
   color: var(--gold);
   opacity: 50%;
+}
+
+.type--quotations {
+  color: var(--gold);
+  font-size: 2rem;
+  line-height: 3rem;
+  font-style: italic;
+  padding: 0rem 0 0rem 0;
+  text-align: center;
+}
+
+.type--quotations--small {
+  letter-spacing: .0625rem;
+  color: var(--gold);
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  font-style: normal;
+  padding: 0rem 0 0rem 0;
+  text-align: left;
 }
 
 /* #endregion Typography */
@@ -544,7 +571,7 @@ a:link, a:visited {
 .long--response--container {
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -553,7 +580,7 @@ a:link, a:visited {
 }
 
 .long--response {
-  width: 80%;
+  width: calc(100% - 4rem);
   text-align: left;
   color: var(--gold);
   font-family: broadsheet,serif;
@@ -561,6 +588,20 @@ a:link, a:visited {
   font-style: normal;
   font-size: 1rem;
   line-height: 150%;
+  text-transform: uppercase;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: .25rem;
+}
+
+.short--response {
+  width: calc(100% - 4rem);
+  text-align: center;
+  color: var(--gold);
+  font-family: broadsheet,serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: .825rem;
+  line-height: 200%;
   text-transform: uppercase;
   font-variant-numeric: oldstyle-nums;
   letter-spacing: .25rem;
@@ -1145,8 +1186,8 @@ h1.splash--headline--type {
 }
 
 .splash--img {
-  height: 3.5rem;
-  padding-bottom: 2rem;
+  height: 3rem;
+  padding: .5rem 0 2rem 0;
 }
 
 .splash--img img {
@@ -1842,7 +1883,7 @@ h2.demo--headline--type {
   z-index: 5;
   height: 87%;
   width: 100%;
-  background: #292525ab;
+  background: #292525dd;
 }
 
 .journal--container {
@@ -1956,7 +1997,7 @@ h2.demo--headline--type {
 
 .inactiveLocation {
   filter: blur(2px);
-  opacity: 50%;
+  opacity: 90%;
   color: var(--light);
   transition: ease .3s;
 }

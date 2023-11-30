@@ -27,7 +27,7 @@
 <script setup>
 import ContentModal from '../components/ContentModal.vue'
 import ContentModalX from '../components/ContentModalX.vue'
-import PuzzleScript from '../components/PuzzleScript.vue'
+import PuzzleScript from '../components/PuzzleScript.vue'  
 </script>
 
 <template>
@@ -84,7 +84,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🪦 Graveyard locked 🟡 -->
+        <!-- 🪦 Graveyard locked 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
@@ -102,8 +102,17 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             :renderChecker="false"
             >
               <template #body--content--1> 
-                <p v-if="!gotKeyItemDagger">
-                  Graveyard locked. Headstones. What's the best way to have the user interact with this? A mini point and click?
+                <p>
+                  Once you hop over the fence, your shoes crunch onto a patch of dry, overgrown weeds. 
+                  The whole little cemetery is engulfed in patches of dead grass, the graves half-swallowed 
+                  by hungry brown leaves. The graveyard is modest and unkempt with only a handful of headstones 
+                  protruding out of the ground.  
+                </p>
+                <p v-if="gotKeyItemDagger">
+                  Lara's gilded dagger weighs heavy in your pack, waiting anxiously to be placed back within its 
+                  proper place. You wonder if Lucien's headstone could be it. 
+                </p>
+                <p>
                   <div class="headstone--alignment">
                     <div class="headstone--grid" @mouseover="handleCursorHover(true)" @mouseleave="handleCursorHover(false)">
                       <div class="headstone--1" @click="headstoneClicked(1)"></div>
@@ -125,21 +134,21 @@ import PuzzleScript from '../components/PuzzleScript.vue'
                   </div>
                   <div class="headstone--type" v-if="headstoneOne">
                     <div class="headstone--headline">John Carroll</div>
-                    <div class="headstone--dates">1789 - 1846</div>
+                    <div class="headstone--dates">1739 - 1786</div>
                     <div class="headstone--epitaph">Bastard.</div>
-                    <div class="headstone--body">This grave is barely readable and appears to have something brown smeared on top.</div>
+                    <div class="headstone--body">This grave appears to have something brown smeared on top.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneTwo">
                     <div class="headstone--headline">Rosemary Collins</div>
-                    <div class="headstone--dates">1829 - 1862</div>
+                    <div class="headstone--dates">1729 - 1762</div>
                     <div class="headstone--epitaph">Loving mother, awful singer.</div>
-                    <div class="headstone--body">The slab is sun-stained with the outline of a flower bouquette.</div>
+                    <div class="headstone--body">The slab is sun-stained with the outline of a flower bouquet.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneThree">
                     <div class="headstone--headline">Lukas Karlsbern</div>
-                    <div class="headstone--dates">1791 - 1836</div>
+                    <div class="headstone--dates">1691 - 1736</div>
                     <div class="headstone--epitaph">May the hellfire burn hot.</div>
-                    <div class="headstone--body">3 body.</div>
+                    <div class="headstone--body">This headstone has been severely neglected — perhaps even vandalized, but the markings are incomprehensible.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneFour">
                     <div class="headstone--headline">D——iel A——dins</div>
@@ -148,83 +157,75 @@ import PuzzleScript from '../components/PuzzleScript.vue'
                     <div class="headstone--body">You can barely read the script on this grave. It must be very old.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneFive">
-                    <div class="headstone--headline">5 check</div>
-                    <div class="headstone--dates">5 check</div>
-                    <div class="headstone--epitaph">5 check</div>
-                    <div class="headstone--body">5 body.</div>
+                    <div class="headstone--headline">Sarah Morgenstern</div>
+                    <div class="headstone--dates">1766 - 1810</div>
+                    <div class="headstone--epitaph">May he Lord Love thee as We Have</div>
+                    <div class="headstone--body">Nothing is placed by this grave, but it's clear to you it was well cared for.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneSix">
-                    <div class="headstone--headline">6 check</div>
-                    <div class="headstone--dates">6 check</div>
-                    <div class="headstone--epitaph">6 check</div>
-                    <div class="headstone--body">one body.</div>
+                    <div class="headstone--headline">William Canin</div>
+                    <div class="headstone--dates">1758 - 1789</div>
+                    <div class="headstone--epitaph">Loyal Servant of God; In Death as in Life</div>
+                    <div class="headstone--body">A gilded rosary has been draped on the stone corner of this headstone.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneSeven">
-                    <div class="headstone--headline">7 check</div>
-                    <div class="headstone--dates">7 check</div>
-                    <div class="headstone--epitaph">7 check</div>
-                    <div class="headstone--body">two body.</div>
+                    <div class="headstone--headline">Arabella Klein</div>
+                    <div class="headstone--dates">1802 - 1802</div>
+                    <div class="headstone--epitaph">Held in His arms; Cradled by heaven's clouds</div>
+                    <div class="headstone--body">This stone seems to share several bundles of flowers with the one right beside it.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneEight">
-                    <div class="headstone--headline">8 check</div>
-                    <div class="headstone--dates">8 check</div>
-                    <div class="headstone--epitaph">8 check</div>
-                    <div class="headstone--body">3 body.</div>
+                    <div class="headstone--headline">Genevieve Klein</div>
+                    <div class="headstone--dates">1782 - 1802</div>
+                    <div class="headstone--epitaph">A Loving Wife in Life; A Dear Mother in Death</div>
+                    <div class="headstone--body">This stone seems to share several bundles of flowers with the one right beside it.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneNine">
-                    <div class="headstone--headline">9 check</div>
-                    <div class="headstone--dates">9 check</div>
-                    <div class="headstone--epitaph">9 check</div>
-                    <div class="headstone--body">4 body.</div>
+                    <div class="headstone--headline">Lara Duguay</div>
+                    <div class="headstone--dates">1783 - 1813</div>
+                    <div class="headstone--epitaph">The Lake's Loveliest Lady</div>
+                    <div class="headstone--body">A collection of faded pink water lilies decorates the stone base of this grave surrounded by soiled columns of heavily burned candles. </div>
                   </div>
                   <div class="headstone--type" v-if="headstoneTen">
-                    <div class="headstone--headline">10 check</div>
-                    <div class="headstone--dates">10 check</div>
-                    <div class="headstone--epitaph">10 check</div>
-                    <div class="headstone--body">5 body.</div>
+                    <div class="headstone--headline">Mary Duguay</div>
+                    <div class="headstone--dates">1737 - 1798</div>
+                    <div class="headstone--epitaph">Beloved daughter of light</div>
+                    <div class="headstone--body">This grave is not decorated with flowers but a folded quilt. Perhaps, it was once a vibrant pattern, but the sun and dirt has rendered the fabric a sepia-toned heap.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneEleven">
-                    <div class="headstone--headline">11 check</div>
-                    <div class="headstone--dates">11 check</div>
-                    <div class="headstone--epitaph">11 check</div>
-                    <div class="headstone--body">one body.</div>
+                    <div class="headstone--headline">Elizabeth Duguay</div>
+                    <div class="headstone--dates">1643 - 1709</div>
+                    <div class="headstone--epitaph">The Mother of Nocta</div>
+                    <div class="headstone--body">A pair of white vases flanks this grave, holding crisp stalks of once-white lilies.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneTwelve">
-                    <div class="headstone--headline">12 check</div>
-                    <div class="headstone--dates">12 check</div>
-                    <div class="headstone--epitaph">12 check</div>
-                    <div class="headstone--body">two body.</div>
+                    <div class="headstone--headline">Lenore Duguay</div>
+                    <div class="headstone--dates">1698 - 1704</div>
+                    <div class="headstone--epitaph">The Lord's Little Light</div>
+                    <div class="headstone--body">A small stuffed bear has been nestled at the base of this headstone.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneThirteen">
-                    <div class="headstone--headline">Lucien Duguay</div>
-                    <div class="headstone--dates">1643 - 1784</div>
-                    <div class="headstone--epitaph">The father of Nocta</div>
-                    <div class="headstone--body">Considering its age, this grave is in good shape. You notice a strange indent in the marble that could be the shilloutte of a dagger.</div>
+                    <div class="headstone--headline">Lucien Duguay I</div>
+                    <div class="headstone--dates">1643 - 1709</div>
+                    <div class="headstone--epitaph">The Father of Nocta</div>
+                    <div class="headstone--body">Considering its age, this grave is in good shape. You notice a strange indent in the marble that could be the silhouette of a dagger.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneFourteen">
-                    <div class="headstone--headline">14 check</div>
-                    <div class="headstone--dates">14 check</div>
-                    <div class="headstone--epitaph">14 check</div>
-                    <div class="headstone--body">4 body.</div>
+                    <div class="headstone--headline">Lucien Duguay II</div>
+                    <div class="headstone--dates">1698 - 1739</div>
+                    <div class="headstone--epitaph">A light in the night; Too soon snuffed</div>
+                    <div class="headstone--body">A patch of yellow lilies once grew around this grave, though all that remains is a pile of dead stalks.</div>
                   </div>
                   <div class="headstone--type" v-if="headstoneFifteen">
-                    <div class="headstone--headline">15 check</div>
-                    <div class="headstone--dates">15 check</div>
-                    <div class="headstone--dates">15 check</div>
-                    <div class="headstone--body">5 body.</div>
+                    <div class="headstone--headline">Lucien Duguay III</div>
+                    <div class="headstone--dates">1734 - 1776</div>
+                    <div class="headstone--epitaph">Lover of God and Country</div>
+                    <div class="headstone--body">An old version of the American flag stands planted in the soil near this grave.</div>
                   </div>
-                  <p v-if="gotKeyItemDagger">
-                  You have the dagger.
-                </p>
                 </p>
               </template>
 
               <template #body--content--2>
-              </template>
-
-              <template #puzzleChecker>
-                <PuzzleScript @someEvent="puzzleGuessCheck" v-if="!lighthouseGuessCorrect"/>
-                <div class="type--reaction type-secondary">{{ lighthouseGuessResponse }}</div>
               </template>
 
               <template #decision--1 v-if="gotKeyItemDagger && headstoneThirteen"><div @click="showChurchModuleUnlocked()" class="module--decision--type type--uppercase--small">Insert the dagger</div></template>
@@ -236,13 +237,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🪦 Graveyard unlocked 🟡 -->
+        <!-- 🪦 Graveyard unlocked 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="churchModuleUnlocked"
             key="churchModuleUnlocked"
-            title="strange grave"
+            title="Lucien's grave"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -255,13 +256,20 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  You place the dagger from lara's chest into the strange grave. The grave reveals an ornate key. 
+                  You kneel before the old granite, your eyes tracing the eroded details of the carved 
+                  stone. You reach into your bag and grasp the still-bloody dagger Lara yanked from her 
+                  own chest. You suppress a shudder at the memory. 
                 </p>
-              </template>
-              
-              <template #puzzleChecker>
-                <PuzzleScript @someEvent="puzzleGuessCheck" v-if="!lighthouseGuessCorrect"/>
-                <div class="type--reaction type-secondary">{{ lighthouseGuessResponse }}</div>
+                <p>
+                  The brass sits cool in your palms for a moment before you carefully slot the object into 
+                  the indentation in the grave. You hold your breath, unsure of what comes next.
+                </p>
+                <p>
+                  A moment later, a mechanism seems to release. Your ears perk at the sound as you look 
+                  around for the source. You find your answer on the left side of the stone, where a hidden 
+                  compartment has been unveiled. Your fingers reach eagerly into the enclave and find the 
+                  cool surface of an intricate golden key with a decorative 'L' engraved on it.
+                </p>
               </template>
 
               <template #decision--1><div class="module--decision--type type--uppercase--small"><RouterLink to="/thankyou">climb the stairs</RouterLink></div></template>
@@ -292,7 +300,10 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  The boats in the harbor are green with old lake slime, with tattered sails and faded planks. There’s a small building at the edge of the dock that says ‘Harbormaster’.
+                  The boats in the harbor are green with old lake slime, with tattered 
+                  sails and faded planks. There’s a small building at the edge of the dock 
+                  that says ‘Harbormaster’. On the other end of the dock, you spot what looks 
+                  to be a brass statue of a large fish. 
                 </p>
               </template>
 
@@ -300,23 +311,23 @@ import PuzzleScript from '../components/PuzzleScript.vue'
               </template>
 
               <template #decision--1>
-                <div v-if="!haveWordsForLara" @click="showDocksShedLockedModule(true)" class="module--decision--type type--uppercase--small">Inspect the building</div>
+                <div v-if="!haveWordsForLara" @click="showDocksShedLockedModule(true)" class="module--decision--type type--uppercase--small">Walk to the building</div>
               </template>
 
-              <template #decision--2><div @click="showDocksFishStatueModule(true)" class="module--decision--type type--uppercase--small">Check out the statue</div></template>
+              <template #decision--2><div @click="showDocksFishStatueModule(true)" class="module--decision--type type--uppercase--small">Go to the statue</div></template>
 
               <template #decision--3><div @click="hideModule" class="module--decision--type type--uppercase--small">leave</div></template>
 
           </ContentModal>
         </transition>
 
-        <!-- ⛴️ 'Harbormaster' Locked 🟡 -->
+        <!-- ⛴️ 'Harbormaster' Locked 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="docksShedLockedModule"
             key="docksShedLockedModule"
-            title="Harbormaster Shack - Locked"
+            title="Old Shack"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -329,7 +340,23 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  Locked Harbormaster
+                  You wander up the creaking dock towards the old building as the lake waves lap 
+                  rhythmically against the aged wood. The building is relatively small, clearly meant 
+                  as more of an office than a residence. You noticed the door is decorated with an 
+                  iron anchor as you reach down and try the handle. Unsurprisingly, the latch is locked
+                  tight. 
+                </p>
+                <p>
+                  You careen your head towards the foggy windows to see if you can spot anything useful. 
+                  It's difficult to see inside the dimly lit building. You can make out a sign that says "NOTICE: 
+                  ensure all night salmon catchers hold the necessary scarcity permits". You also see what appears to
+                  be a board on the wall with several empty hooks. You imagine it must have been to hold the 
+                  keys to the boats in the harbor. Nevertheless, it seems like all the slots are empty.  
+                </p>
+                <p>
+                  You're about to walk off when you notice that actually there's a single key hanging on the 
+                  board. You consider breaking through the windows to retrieve it, but you're too big to fit 
+                  all the way through. You'll need to get the door open if you want that key, it seems.
                 </p>
               </template>
 
@@ -347,13 +374,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- ⛴️ 'Harbormaster' Unlocked 🟡 -->
+        <!-- ⛴️ 'Harbormaster' Unlocked 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="docksShedUnlockedModule"
             key="docksShedUnlockedModule"
-            title="Harbormaster Shack - Unlocked"
+            title="Old Shack"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -366,7 +393,11 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  Unlocked Harbormaster
+                  The handle is cold and slimy with the same algae that covers the boats in the 
+                  harbor, but it turns well enough when you turn the key in its lock. You frown 
+                  as you enter and wipe the slime on your pants before you head for the key board 
+                  hanging on the wall. With an energetic sigh, you snatch the key off the hook and 
+                  pocket it. Now, you just need to find the boat it goes to. 
                 </p>
               </template>
 
@@ -382,7 +413,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- ⛴️ Fish Plaque 🟡 -->
+        <!-- ⛴️ Fish Plaque 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
@@ -401,8 +432,18 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  Fish Statue
+                  You approach the dark statue and behold the visage of a large fish. Its mouth hangs 
+                  slightly agape as it bares a row of small teeth at you. Its been rendered in a pleasing 
+                  curve as if in the act of swimming nimbly through clear waters. Peering down from the fish's
+                  bronze figure, you see a short plaque sitting on the concrete base.  
                 </p>
+                <blockquote>
+                  <i><b>Salmo noctem</b></i>
+                  The Night Salmon is the rare, delicious, and valuable species of salmon known for its 
+                  obsidian, opalescent scales. This fish species is only found in the waters of Lake Nocta 
+                  and was discovered by Lucien Duguay I in 1689. Nocta's town motto “Cum cetera finiuntur, 
+                  nox manet”, as penned by Duguay, was inspired by the Salmo noctem. 
+                </blockquote>
               </template>
 
               <template #body--content--2>
@@ -436,7 +477,14 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  Looming at the end of the ruins stands a dark manor enclosed by a iron fence. You imagine once the building was quite beautiful — the ornate stone cornices and porticos enveloped in a lush frame of meticulously pruned shrubs and florals. But like every structure you've discovered so far, the building is a ghost of it former self — half-swallowed by hungry vines and crumbling at the edges. The wind howls through the shattered windows and the heavy wood front doors swing eerily in the weight of the breeze. The hinges squeak as the doors sway at a crawled pace. The unsettling sound beckons you towards the threshold, chillingly welcoming you to enter.
+                  Looming at the end of the ruins stands a dark manor enclosed by a iron fence. 
+                  You imagine once the building was quite beautiful — the ornate stone cornices 
+                  and porticos enveloped in a lush frame of meticulously pruned shrubs and florals. 
+                  But like every structure you've discovered so far, the building is a ghost of it 
+                  former self — half-swallowed by hungry vines and crumbling at the edges. The wind 
+                  howls through the shattered windows and the heavy wood front doors swing eerily in 
+                  the weight of the breeze. The hinges squeak as the doors sway at a crawled pace. The 
+                  unsettling sound beckons you towards the threshold, chillingly welcoming you to enter.
                 </p>
               </template>
 
@@ -449,13 +497,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Foyer 🟡 -->
+        <!-- 🏠 Mansion Foyer 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="mansionFoyerModule"
             key="mansionFoyerModule"
-            title="Foyer"
+            title="the manor"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -468,11 +516,21 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  The Manor's Foyer 
+                  The floorboards moan under your footsteps as you step onto a musty red carpet and 
+                  behold the manor's large interior. The foyer opens out to a grand spiral staircase 
+                  with a long hallway hiding behind. Light floods in from the dirty windows, casting 
+                  spotlights onto the piles of broken glass on the floor and intricate spider webs hung 
+                  from the ceiling. Something rustles to your left and you see what you assume is a rat 
+                  scurry from under one piece of detritus to another.  
+                </p>
+                <p>
+                  The manor is half-collapsed. It appears that a support beam was somehow knocked free and it's
+                  left most of the building inaccessible. But the path to the stairs and to the hallway beyond 
+                  them remains clear for you to explore.  
                 </p>
               </template>
 
-              <template #decision--1><div @click="showMansionFloorOneModule()" class="module--decision--type type--uppercase--small">Explore first floor</div></template>
+              <template #decision--1><div @click="showMansionFloorOneModule()" class="module--decision--type type--uppercase--small">Head to the hallway</div></template>
 
               <template #decision--2><div @click="showMansionFloorTwoModule()" class="module--decision--type type--uppercase--small">Go upstairs</div></template>
               
@@ -481,13 +539,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Floor 1 🟡 -->
+        <!-- 🏠 Mansion Floor 1 👁️ -->
         
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="mansionFloorOneModule"
             key="mansionFloorOneModule"
-            title="Floor one"
+            title="the manor"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -500,7 +558,11 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  The first floor.
+                  The hallway is dark and difficult to navigate, but you follow the path towards a light at 
+                  its end. When you arrive, you stand before a pair of doors. On your left stands a sturdy set 
+                  of double wooden doors framed with a pair of white and blue vases that must have been quite beautiful 
+                  before their delicate surfaces were chipped. On your right stands an iron door that provides a 
+                  welcome stream of light through its winding filigree. It must lead back outside.
                 </p>
               </template>
 
@@ -519,13 +581,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Dining Room 🟡 -->
+        <!-- 🏠 Mansion Dining Room 👁️ -->
         
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="mansionDiningModule"
             key="mansionDiningModule"
-            title="Dining room"
+            title="the manor"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -538,8 +600,25 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  The dining room.
+                  The doors give way with some effort on your part, leaving you catching your breath as 
+                  you step into what looks to be a dining room. A long mahogany table sits at the center 
+                  of the tall room, illuminated by a row of towering arched windows that open out to the lake. 
+                  This room is in notably better shape than the rest of the house and you wonder if you're 
+                  the first soul to enter it in a long while. 
                 </p>
+                <p>
+                  There's a matching sideboard to the right of the table that looks to have a note lying on it.
+                  You pluck the sealed envelope out from under a tarnished silver pitcher and read the words 
+                  scrawled delicately on the yellowed paper. 
+                </p>
+                <blockquote><i>
+                  Please be advised that Mister Duguay has requested that all keys to the Lady's chambers be promptly delivered to him. 
+                  No copies shall remain for staff usage. This includes the spare key in the greenhouse shed. 
+                  <br />
+                  Regards, 
+                  <br />
+                  Penelope Seville, Head Housekeeper</i>
+                </blockquote>
               </template>
 
               <template #decision--1><div @click="showMansionGreenhouseModule()" class="module--decision--type type--uppercase--small">Go to the greenhouse</div></template>
@@ -551,13 +630,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Greenhouse 🟡 -->
+        <!-- 🏠 Mansion Greenhouse 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="mansionGreenhouseModule"
             key="mansionGreenhouseModule"
-            title="Greenhouse"
+            title="the manor"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -570,7 +649,33 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  The greenhouse
+                  The iron door groans as you push it outward. The passage reveals 
+                  a small greenhouse, enclosed entirely in an intricate lattice of 
+                  curved glass panes. Sun seeps through the shattered glass, though 
+                  the hungry vines that crawl up the wall of glass swallow some of the 
+                  the light.
+                </p>
+                <p>
+                  The plants have all but reclaimed the old greenhouse. The herb pots are 
+                  overwhelmed with long, dry curls of old branches and leaves. The flower 
+                  beds spill out over the edge of the central pedestal. All the foliage is 
+                  long past dead and the remains crunch under your boots as you wander deeper 
+                  into the structure. 
+                </p>
+                <p v-if="!visitedDiningRoom">
+                  You wander between the aisles of dead plants for a few minutes, looking for 
+                  anything that might be of use. It's difficult to get a good look through the 
+                  overgrowth, but, ultimately, there doesn't seem to be much to find here if 
+                  you don't know what you're looking for.
+                </p>
+                <p v-if="visitedDiningRoom">
+                   You recall the note you found in the dining room and begin to search 
+                   for the key that the housekeeper mentioned. Your eyes scan the greenhouse 
+                   for any sign of the aforementioned shed. After a moment, you spot a small 
+                   enclosure nestled in the northeast corner. The door is half-obscured by a 
+                   thick layer of ivy, but once you brush away the branches the handle reveals 
+                   itself. You give the tarnished brass a tug and the dull glint of a large 
+                   iron key catches your eye. You seize it and drop it in your pack for future use. 
                 </p>
               </template>
 
@@ -583,13 +688,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Floor 2 🟡 -->
+        <!-- 🏠 Mansion Floor 2 👁️ -->
         
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="mansionFloorTwoModule"
             key="mansionFloorTwoModule"
-            title="Floor Two"
+            title="the manor"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -602,7 +707,25 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  The top of the stairs.
+                  You waiver as you climb the red carpeted stairs, the boards shifting precariously 
+                  under the weight of your steps. Your hand hovers cautiously over the carved rail
+                  as you carefully place your feet on each dusty platform. Part of you is surprised 
+                  when you successfully reach the top of the steps without falling through one of 
+                  fragile boards.  
+                </p>
+                <p>
+                  The second floor of the manor is in a state of utter disrepair. The stairs 
+                  sit at the center of an expansive hall of doors and what looks to be another 
+                  stairwell up to another floor. But the ceiling has caved in, leaving the east 
+                  side of the second floor and the other set of stairs completely inaccessible. 
+                </p>
+                <p>
+                  As you look to the west wing, you notice that the walls are covered in a sickly 
+                  green floral wallpaper that peels into curled ribbons. The pattern crawls up the 
+                  bare wooden walls like a horde of paper-thin creatures. They frame the only two 
+                  doors you're able to access like a pack of looming gargoyles. They watch you  
+                  from their posts along the doors' carved cornices, silently guarding each entrance 
+                  as you walk down the hall. 
                 </p>
               </template>
 
@@ -625,7 +748,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Study 🟡 -->
+        <!-- 🏠 Mansion Study 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
@@ -643,20 +766,41 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             :renderChecker="false"
             >
               <template #body--content--1> 
-                <p v-if="!gotSeenLockedChest && !haveSeenUnlockedChes">
-                  the study with a gallery wall and a desk etc.
+
+                <!-- normal response -->
+
+                <p v-if="!gotSeenLockedChest && !gotSeenUnlockedChest">
+                  Your hand grips the cold brass handle and you push the door inward. On the other side, you
+                  find yourself standing in a large octagonal room lined with full bookshelves that stretch 
+                  all the way to the ceiling. There must be hundreds of books sitting in those dusty shelves, and 
+                  several more sit atop a large wooden desk arranged at the center of a trio of large arched windows 
+                  at the far end of the study.  
                 </p>
+                <p v-if="!gotSeenLockedChest && !gotSeenUnlockedChest">
+                  The wall to the left of the desk sports an impressive collection of artwork meticulously placed 
+                  in a pleasing array above a long cold fireplace. It's difficult to know where to begin your search 
+                  for clues, but something about the hearth piques your interest.
+                </p>
+
+                <!-- locked chest response -->
+                
                 <p v-if="gotSeenLockedChest && !gotSeenUnlockedChest">
-                  There's a hole in the wall with the locked chest you found.
+                  The painting was concealing a small enclave nestled into the walls of the study, 
+                  and — even more thrilling still — an ornate chest lies perfectly untouched in the 
+                  wooden niche. 
                 </p>
+
+                <!-- open chest response -->
+
                 <p v-if="gotSeenLockedChest && gotSeenUnlockedChest">
-                  The open chest lies in the enclave.
+                  The open silver chest sits right where you left it in it's niche.
                 </p>
               </template>
 
               <template #decision--1>
                 <div v-if="!gotSeenLockedChest && !gotSeenUnlockedChest" @click="showMansionStudyWallModule()" class="module--decision--type type--uppercase--small">Inspect the gallery wall</div>
-                <div v-if="gotSeenLockedChest && !gotSeenUnlockedChest" @click="showMansionStudyChestModuleLocked()" class="module--decision--type type--uppercase--small">Go to the chest</div>
+                <div v-if="gotSeenLockedChest && !gotSeenUnlockedChest && !gotKeyItemChestKey" @click="showMansionStudyChestModuleLocked()" class="module--decision--type type--uppercase--small">Go to the chest</div>
+                <div @click="showMansionStudyChestModuleUnlocked()" v-if="gotKeyItemChestKey && gotSeenLockedChest && !gotSeenUnlockedChest" class="module--decision--type type--uppercase--small">Use the key</div>
                 <div v-if="gotSeenLockedChest && gotSeenUnlockedChest" @click="showMansionStudyChestModuleUnlocked()" class="module--decision--type type--uppercase--small">Look inside the chest</div>
               </template>
               
@@ -667,13 +811,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Study Wall 🟡 -->
+        <!-- 🏠 Mansion Study Wall 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="mansionStudyWallModule"
             key="mansionStudyWallModule"
-            title="Gallery Wall"
+            title="the study"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -686,11 +830,37 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  Dagger holder and paintings.
+                  Approaching the wall of paintings, you study the collection silently. At the 
+                  center sits a large landscape of a serene lakeshore. The grass gleams with a 
+                  gentle touch of dew as the morning sun reflects on the water's soft wakes. 
+                </p>
+                <p>
+                  Flanking the lake, a pair of shadow portraits face the waters. The silhouetted profiles 
+                  of a man and woman look upon the central painting from their gilded oval frames with their 
+                  dignified chins lifted slightly upright. 
+                </p>
+                <p>
+                  On the lady's right hangs a depiction of a noble carrack sailing unabashed through a 
+                  tempestuous sea. Its gleaming cream sails billow with gusts of wind as it presses onward 
+                  through the swirling waves. The plate attached to the decorated frame reads <i>La Bête de Mer</i>.
+                </p>
+                <p>
+                  To the left of the man, a portrait of an elderly man is rendered richly in oil. He rests upon a 
+                  silver cane as he watches you with a pair of serious gray eyes. The man sports a simple yet 
+                  refined black coat that falls to his knees, adorned with a shining set of embossed silver buttons. 
+                  You spot a signet ring on his left hand as it grasps a long feathered quill. 
+                </p>
+                <p>
+                  On the mantle below the paintings, a large stuffed fish is displayed. Its dark black scales have 
+                  been polished to shine with a rainbow of shimmering colors in the daylight, but the flesh around the
+                  animal's mouth has started to recede, making the the creature quite unpleasant to look at despite the 
+                  taxidermist's best attempts. Beside the fish stands an empty wooden mount with a pair of gilded hooks 
+                  sitting idly on the front. It must have held some kind of small, decorative item at some point. The plate
+                  below the empty hooks reads <i>For Nocta's light</i>.
                 </p>
               </template>
 
-              <template #decision--1><div v-if="gotLaraPaintingHint" @click="showMansionStudyChestModuleLocked()" class="module--decision--type type--uppercase--small">Remove the painting</div></template>
+              <template #decision--1><div v-if="gotLaraPaintingHint" @click="showMansionStudyChestModuleLocked()" class="module--decision--type type--uppercase--small">Remove the lake painting</div></template>
               
               <template #decision--2><div @click="showMansionFloorTwoModule()" class="module--decision--type type--uppercase--small">Back to the hall</div></template>
               
@@ -699,7 +869,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Study Hidden Chest Locked 🟡 -->
+        <!-- 🏠 Mansion Study Hidden Chest Locked 👁️ -->
         
         <transition name="label" mode="out-in">
           <ContentModal
@@ -718,7 +888,17 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  Just a locked chest
+                  Your heart races as you grasp the dust-covered edges of the central painting. 
+                  Translucent strands of abandoned spider webs flutter onto your face as you pull the frame 
+                  toward you and place it on the ground. You brush the webs away and your apprehensive eyes fall
+                  upon the space hidden behind the lake. In awe, you discover that the painting was concealing a
+                  small enclave nestled into the walls of the study, and — even more thrilling still — an ornate 
+                  chest lies perfectly untouched in the wooden niche. 
+                </p>
+                <p>
+                  Your hands reach out excitedly towards the chest, but, as your fingertips press into the cool 
+                  silver surface, your eyes find the darkness of an expectant keyhole. It sits diligently waiting for the 
+                  properly shaped key wards before it will release the latch and allow itself to open. 
                 </p>
               </template>
 
@@ -731,7 +911,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Study Hidden Chest Unlocked 🟡 -->
+        <!-- 🏠 Mansion Study Hidden Chest Unlocked 👁️ -->
         
         <transition name="label" mode="out-in">
           <ContentModal
@@ -750,8 +930,66 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  Map & Letters
+                  The tarnished hinges of the chest lid squeak as you finally open the chest. 
+                  There's a moment of disappointment when the stash it reveals contains neither 
+                  jewels nor gold — merely a small collection of letters. As the disappointment 
+                  subsides however, you begin to wonder what the letters must contain to warrant 
+                  such a secure hiding spot.
                 </p>
+                <div class="long--response--container"><div class="long--response" @click="chestContents(1)" @mouseover="handleCursorHover(true)" @mouseleave="handleCursorHover(false)">
+                      offcial envelope
+                </div></div>
+                <blockquote v-if="chestContentsRichard">
+                  <p>Esteemed Mr. Duguay,</p>
+                  <p>I must express my admiration for your fervent dedication to the pursuit of justice in the case of Mr. Falker's transgressions. However, my conscience remains steadfast in its refusal to condemn a man to the gallows for a crime as trifling as petty theft.</p>
+                  <p>Nevertheless, I am acutely cognizant of the profound significance that your grandfather's signet ring holds, both for your esteemed family lineage and for the sanctity of our cherished township. Therefore, I shall mete out a suitable sentence that befits the actions of Mr. Falker.</p>
+                  <p>In my deliberations, it appears to me that the gentleman in question can embark upon a path of redemption through an enduring commitment to the service of Nocta. As fortune would have it, Mr. Kraver finds himself in want of a new apprentice at the headlight. You are certainly aware of Mr. Kraver's...disposition. Thus, I am confident that the position will prove appropriately severe, thereby assuaging your righteous thirst for justice in this matter.</p>
+                  <p>I wish to convey my unreserved appreciation for your steadfast partnership in the governance of our revered township, and I eagerly anticipate your continued benevolence in supporting our noble system of justice.</p>
+                  <p>With utmost regard,</p>
+                  <p><i>Richard Klein, Chief Justice</i></p>
+                </blockquote>
+                <div class="long--response--container"><div class="long--response" @click="chestContents(2)" @mouseover="handleCursorHover(true)" @mouseleave="handleCursorHover(false)">
+                      Small envelope
+                </div></div>
+                <blockquote v-if="chestContentsEarl">
+                  <p>Dear Mr. Duguay,</p>
+                  <p>I am writing to thank you for your gracious invitation to your home this month. I offer my formal compliments to Mrs. Duguay for her excellent hosting.</p>
+                  <p>Additionally, I hoped to affirm my deep concern regarding the salmon population in our beloved lake. As you are well aware, our exports of Salmo Noctem are in high demand in the southern regions of the state — we have even seen a demand growing for the scales and meat of the fish in states as south as New York.</p>
+                  <p>That, dear mayor, is the heart of issue. Our local fishermen have run rampant to keep up with the demand and the quantity of night salmon is dwindling at a rapid rate. We now stand perilously close to a threshold beyond which the fish population may never recover. The Nocta economy relies heavily upon the night salmon as our prime export and I fear for the fate of our town if the species were pushed to extinction. Furthermore, the diminishing food supply has engendered a heightened state of unruliness among the lake's...local fauna, and fishermen find themselves faced with great peril upon each expedition into the deep waters.</p>
+                  <p>If you are unwilling to embrace more stringent fishing restrictions, I implore you once again to consider allocating funds for research on the night salmon's breeding habits. There is still much we need to learn before we can establish a viable fish farming enterprise, and we remain sorely lacking in the necessary infrastructure to support such an endeavor.</p>
+                  <p>I am aware of your adamance to exercise control over the night salmon population and confine farming operations solely within our township. However, I beseech you to reconsider Mr. Jenkins' proposition to introduce a portion of the population to Chamberlain Lake to preserve the species' existence.</p>
+                  <p>Thank you for your consideration.</p>
+                  <p>Regards,</p>
+                  <p><i>Earl Morgenstern, Harbormaster</i></p>
+                </blockquote>
+                <div class="long--response--container"><div class="long--response" @click="chestContents(3)" @mouseover="handleCursorHover(true)" @mouseleave="handleCursorHover(false)">
+                      Hastily folded letter
+                </div></div>
+                <blockquote v-if="chestContentsAlvin">
+                  <p>Dear Mr. Duguay,</p>
+                  <p>I pen this letter to provide you with an update concerning your request for an investigation into the threatening missive you recently received from an anonymous source. My dedicated team of officers has diligently examined the letter, and it is with a sense of confidence that we have identified a suitable suspect. For your reference, I have enclosed the original letter herewith.</p>
+                  <p>Our accumulated evidence strongly implicates Ms. Falker as the likely perpetrator behind this audacious threat. Beyond the explicit danger to your own life, we have reason to believe that Ms. Falker is involved in the detestable practice of witchcraft, as evidenced by the presence of a hex within the aforementioned correspondence.</p>
+                  <p>Locating Ms. Falker's residence has proven challenging — surely protected by her fiendish pact. However, it is precisely this protection that may serve as the key to her capture. Ms. Falker has employed arcane symbols to ward the divine light of God from her dark acts, but it is these very wards that shall guide us unerringly to her doorstep. Rest assured, swift action is imminent, as I intend to lead a contingent of officers, accompanied by the Prior, to apprehend her within a matter of days.</p>
+                  <p>I extend my appreciation for your patience as we diligently pursued this matter. I eagerly anticipate bringing the full force of justice to bear upon this malevolent hag.</p>
+                  <p>Signed,</p>
+                  <p><i>Sheriff Alvin Canin</i></p>
+                </blockquote>
+                <p>
+                  You see one final item in the chest nestled below the letters. The dark leather-bound book appears to be a journal, with entries written religiously over the course of a year.</p>
+                <p>
+                  Most of the entries are rather dull — discussions of coffers and infrastructure, records of meetings and travel plans. You thumb through the pages to get to the end, curious about the last entires that were written.
+                </p>
+                <div class="long--response--container"><div class="long--response" @click="chestContents(4)" @mouseover="handleCursorHover(true)" @mouseleave="handleCursorHover(false)">
+                      Worn Journal
+                </div></div>
+                <blockquote v-if="chestContentsLucien">
+                  <p><i>Feb 4</i><br>
+                  <p>Lara has descended into a state of absolute lunacy. Her vexing demeanor has persisted since October, but news of Falker's disappearance reached her through some wretched servant whom I promptly discharged.</p>
+                  <p>Night after night, she prattles on about forsaking me, forsaking our quiet abode to recklessly flee to the city. I fail to fathom her unwavering determination to depart when I provide her with every conceivable necessity, every fleeting desire. Although she possesses a captivating countenance, her capricious temperament has all but eroded any fondness for her I may have previously held.</p></p>
+                  <p><i>Feb 6</i><br>
+                  <p>She is utterly inconsolable. She is ravaged by madness. The impudent wretch discovered my correspondence with Klein, despite my repeated admonitions to never disturb the painting of the lake.</p>
+                  <p>Her flagrant disregard for my esteemed family name, for our cherished heritage, for the future of Nocta, has ignited a blazing fury within me. I can no longer abide her insolence. She must face retribution. She must be dealt with.</p></p>
+                </blockquote>
               </template>
 
               <template #decision--1></template>
@@ -763,7 +1001,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Bedroom 🟡 -->
+        <!-- 🏠 Mansion Bedroom 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
@@ -778,18 +1016,45 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             :renderDecision1="true"
             :renderDecision2="true"
             :renderDecision3="true"
-            :renderChecker="false"
+            :renderChecker="true"
             >
               <template #body--content--1> 
                 <p v-if="!gotBedroomKey">
-                  The door is locked
+                  You stand before a heavy wooden door with an ornate brass handle. Unlike most of the manor, 
+                  this room seems almost completely undisturbed. The frame is lined with dusty old cobwebs, 
+                  but the wooden barrier is almost reverently undamaged — unmarred by neither scratches 
+                  nor rot. As you reach for the handle, it becomes evident why: this door is locked. You'll 
+                  have to find the proper key to get in.  
                 </p>
                 <p v-if="gotBedroomKey">
-                  Empty bedroom
+                  You insert the key and the lock gives way with a distinct 'click'. The door hinges squeak 
+                  violently as you turn the handle to enter. The disruptive sound leaves your jaw tense as you
+                  instinctually peer over your shoulder. You can't see anything in the hall or in the bedroom 
+                  for that matter, but somehow you feel watched by some unseen force.   
+                </p>
+                <p v-if="gotBedroomKey">
+                  The bedroom is illuminated by a pair of dirty windows, framed with ornate cobalt drapes 
+                  that have turned a cool gray from sun exposure and a thick layer of dust. The air in here 
+                  feels thin and cold despite the apparent lack of ventilation. 
+                </p>
+                <p v-if="gotBedroomKey">
+                  There doesn't seem to be much in this room. The furniture has all been covered with thin white 
+                  sheets and the bed has been stripped bare. It seems like this room has been empty for a long 
+                  time — even longer than the town itself. Yet, you can't help but feel like there's a secret 
+                  to uncover here. What could it be?
+                </p>
+                <p v-if="gotBedroomKey && haveWordsForLara">
+                  You recall the watery memorial you found and wonder if these chambers belonged to the same 'Lady'. 
+                  Perhaps she holds the key to whatever secret hides here — whoever she might be. 
                 </p>
               </template>
 
-              <template #decision--1 v-if="gotBedroomKey && haveWordsForLara"><div @click="showMansionBedroomLaraIntroModule()" class="module--decision--type type--uppercase--small">Say the words you found</div></template>
+              <template #puzzleChecker v-if="gotBedroomKey">
+                <PuzzleScript @someEvent="puzzleGuessCheckLara" v-if="!laraGuessCorrect"/>
+                <div class="type--reaction type-secondary">{{ laraGuessResponse }}</div>
+              </template>
+
+              <template #decision--1 v-if="gotBedroomKey && laraGuessCorrect"><div @click="showMansionBedroomLaraIntroModule()" class="module--decision--type type--uppercase--small">Call out to Lara</div></template>
               
               <template #decision--2><div @click="showMansionFloorTwoModule()" class="module--decision--type type--uppercase--small">Back to the hall</div></template>
               
@@ -798,13 +1063,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Bedroom Lara Unlocked 🟡 -->
+        <!-- 🏠 Mansion Bedroom Lara Unlocked 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="mansionBedroomLaraIntroModule"
             key="mansionBedroomLaraIntroModule"
-            title="Hello Lara"
+            title="The bedroom"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -816,18 +1081,60 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             :renderChecker="false"
             >
               <template #body--content--1> 
-                <p v-if="!gotLaraPaintingHint">
-                  You see a strange woman suddenly.
-                  <div class="type--reaction type-secondary">“Tranquil waters I do see, but still the fire burns beneath. Do not move the water, Lara. Don’t look behind the water, Lara. There is nothing to see.”</div>
+                <p v-if="!gotSeenGallery">
+                  You blink and suddenly a figure appears in the sunlight stream bleeding in from 
+                  the nearest window. You jump back towards the door in surprise, your wide eyes 
+                  watching the woman closely. Lara, you presume, is dressed in a stained nightgown 
+                  that falls just above her bare ankles. Her long black hair falls in touseled ringlets 
+                  down her back as she stands very still — her chest not even heaving as she wheezes 
+                  out labored breaths.   
                 </p>
-                <p v-if="gotLaraPaintingHint">
-                  Lara is still mumbling about something.
+                <p v-if="!gotSeenGallery">
+                  You offer the woman a timid greeting, and she begins to speak as she faces towards 
+                  the window. Her voice — dry and soft — whispers a refrain as if entranced.
+                  <div class="long--response--container">
+                    <div class="long--response">
+                      “Tranquil waters I do see, but still the fire burns beneath. Do not move 
+                      the water, Lara. Don’t look behind the water, Lara. There is nothing to 
+                      see.”
+                    </div>
+                  </div>
+                  You try to ask her to explain this, but it almost seems like she can't hear you. 
+                  The woman simply repeats the words over and over as if you weren't there at all.
+                </p>
+
+                <p v-if="gotSeenGallery">
+                  You can hear Lara's voice from the hall, her rasped incantation still spilling 
+                  slowly out of her tired mouth.
+                  <div class="long--response--container">
+                    <div class="short--response">
+                      “Tranquil waters I do see, but still the fire burns beneath. Do not move 
+                      the water, Lara. Don’t look behind the water, Lara. There is nothing to 
+                      see.”
+                    </div>
+                  </div>
+                </p>
+                <p v-if="gotSeenGallery">  
+                  When you enter the room this time, however, Lara is staring right at you. Your 
+                  breath catches as your horrified eyes make contact with the uncanny black voids
+                  in her skull. You find yourself unable to look away even as your feet pull you back 
+                  towards the threshold. Yet, when your palms find the wood behind your back, you realize 
+                  Lara has made no move to attack you.   
+                </p>
+                <p v-if="gotSeenGallery">  
+                  In your momentary respite, your eyes wander away from hers to see that a dagger has been 
+                  plunged into the woman's chest. A stream of red soils the white of her gown, yet the wound 
+                  appears centuries old as her blood sits congealed at the hilt.       
+                </p>
+                <p v-if="gotSeenGallery && gotSeenGraveyard">  
+                  You remember the strange grave you saw in the churchyard. Could the dagger in Lara's chest 
+                  be the match for its indentation? 
                 </p>
               </template>
 
               <!-- 👋 Going to change this to a puzzle checker to ask for dagger -->
               
-              <template #decision--1 v-if="gotSeenGallery == true && gotSeenGraveyard == true"><div @click="showMansionBedroomLaraDaggerModule()" class="module--decision--type type--uppercase--small">Ask Lara for the dagger in her chest</div></template>
+              <template #decision--1 v-if="gotSeenGallery == true && gotSeenGraveyard == true"><div @click="showMansionBedroomLaraDaggerModule()" class="module--decision--type type--uppercase--small">Ask Lara for the dagger</div></template>
               
               <template #decision--2><div @click="showMansionFloorTwoModule()" class="module--decision--type type--uppercase--small">Back to the hall</div></template>
               
@@ -836,45 +1143,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 🏠 Mansion Bedroom Lara Unlocked & You need the dagger 🟡 -->
+        <!-- 🏠 Mansion Bedroom Lara Unlocked & You need the dagger 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
             v-if="mansionBedroomLaraDaggerModule"
             key="mansionBedroomLaraDaggerModule"
-            title="Lara's Dagger"
-            :renderBigImg="false"
-            :renderInlineImg="false"
-            :renderHeadline="true"
-            bigImg="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/danger.jpg"
-            inlineImg="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/notice.jpg"
-            :renderDecision1="true"
-            :renderDecision2="true"
-            :renderDecision3="false"
-            :renderChecker="false"
-            >
-              <template #body--content--1> 
-                <p>Lara yanks the dagger out of her chest and throws it at you in a rage.
-                  <span class="type--reaction type-secondary">“pain...PAIN....—....take...TAKE....—....GO”</span>
-                </p>
-              </template>
-
-              <template #decision--1></template>
-
-              <template #decision--2><div @click="showMansionFloorTwoModule()" class="module--decision--type type--uppercase--small">Back to the hall</div></template>
-              
-              <template #decision--3><div @click="hideModule()" class="module--decision--type type--uppercase--small">Leave</div></template>
-
-          </ContentModal>
-        </transition>
-
-        <!-- 🏠 Mansion Bedroom Lara Unlocked & You don't need to speak to her again 🟡 -->
-
-        <transition name="label" mode="out-in">
-          <ContentModal
-            v-if="mansionBedroomDoneModule"
-            key="mansionBedroomDoneModule"
-            title="the lady's chambers"
+            title="The bedroom"
             :renderBigImg="false"
             :renderInlineImg="false"
             :renderHeadline="true"
@@ -887,8 +1162,19 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  Lara wails at you.
-                  <span class="type--reaction type-secondary">“go...LEAVE — ....needed....ELSEwhere — needed NEEDED”</span>
+                  You almost expect the specter to ignore your request, but this question provokes 
+                  an alarming response. The woman wails violently, her hands writhing as she reaches 
+                  for the gilded hilt. She screams as if the object had just been plunged in, and her 
+                  agonized cries only deepen as the knife slides out of her decayed flesh. As she pulls 
+                  the weapon free, she roars at you in a rage, sending the object clattering towards the 
+                  ground at your feet. Finally, she speaks to you for the first time. 
+                  <div class="type--reaction type-secondary">“pain...PAIN....—....take...TAKE....—....GO”</div> 
+                  You wince as she twitches with notable anguish and you find yourself feeling equal parts 
+                  sympathy and fear as you watch her. A moment later, you feel it safe enough to retrieve 
+                  the item you so boldly asked her to relinquish. 
+                  <div class="type--reaction type-secondary">“...thank you”</div> 
+                  You softly say to the ghost, watching her closely as you gingerly reach down and collect 
+                  the bloodied dagger off the floor. 
                 </p>
               </template>
 
@@ -901,7 +1187,42 @@ import PuzzleScript from '../components/PuzzleScript.vue'
           </ContentModal>
         </transition>
 
-        <!-- 📰 Newspaper 🟡 -->
+        <!-- 🏠 Mansion Bedroom Lara Unlocked & You don't need to speak to her again 👁️ -->
+
+        <transition name="label" mode="out-in">
+          <ContentModal
+            v-if="mansionBedroomDoneModule"
+            key="mansionBedroomDoneModule"
+            title="The bedroom"
+            :renderBigImg="false"
+            :renderInlineImg="false"
+            :renderHeadline="true"
+            bigImg="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/danger.jpg"
+            inlineImg="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/notice.jpg"
+            :renderDecision1="true"
+            :renderDecision2="true"
+            :renderDecision3="false"
+            :renderChecker="false"
+            >
+              <template #body--content--1> 
+                <p>
+                  You peek back into the bedroom and see the frail woman still twitching. 
+                  She's mumbling something incoherent until she spots you. As her empty eyes 
+                  fall upon you, she begins to wail once more. 
+                  <div class="type--reaction type-secondary">“YOU—...go...LEAVE — ....needed....ELSEwhere — needed NEEDED”</div>
+                </p>
+              </template>
+
+              <template #decision--1></template>
+
+              <template #decision--2><div @click="showMansionFloorTwoModule()" class="module--decision--type type--uppercase--small">Back to the hall</div></template>
+              
+              <template #decision--3><div @click="hideModule()" class="module--decision--type type--uppercase--small">Leave</div></template>
+
+          </ContentModal>
+        </transition>
+
+        <!-- 📰 Newspaper 👁️ -->
 
         <transition name="label" mode="out-in">
           <ContentModal
@@ -920,7 +1241,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  There's an old newspaper on the ground here, caught under the weight of a loose piece of wood. 
+                  As you wander through the empty ruins, you see an old newspaper on the ground here, caught under the weight of a loose piece of wood. 
                 </p>
                 <p>
                   <blockquote>
@@ -962,7 +1283,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
         viewBox="0 0 5082 2250" 
         v-show="lighthouseNoFade" 
         key="lighthouseNoFade">
-          <image width="5082" height="2250" xlink:href="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/town.png"></image>
+          <image width="5082" height="2250" xlink:href="https://dani-sundell.github.io/explore-nocta/imgs/town.png"></image>
         </svg>
         </transition>
 
@@ -975,7 +1296,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
         viewBox="0 0 5082 2250" 
         v-show="lighthouseFade" 
         key="lighthouseFade">
-          <image width="5082" height="2250" xlink:href="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/town.png"></image>
+          <image width="5082" height="2250" xlink:href="https://dani-sundell.github.io/explore-nocta/imgs/town.png"></image>
         </svg>
         </transition>        
 
@@ -988,7 +1309,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
         height="100%" 
         viewBox="0 0 5082 2250" 
         opacity="1">
-            <image width="5082" height="2250" xlink:href="https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/lighthouse-fade.jpg" opacity="0"></image>
+            <image width="5082" height="2250" xlink:href="https://dani-sundell.github.io/explore-nocta/imgs/town.png" opacity="0"></image>
             
             <!-- church -->
 
@@ -1014,7 +1335,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
 
             <!-- newspaper -->
 
-            <rect x="1970" y="1850" fill="#aaff33" opacity="0" width="170" height="152" @mouseover="handleCursorHover(true)" 
+            <rect x="1970" y="1750" fill="#aaff33" opacity="0" width="135" height="132" @mouseover="handleCursorHover(true)" 
             @mouseleave="handleCursorHover(false)"
             @click="showNewspaperModule"> 
             </rect>             
@@ -1127,9 +1448,9 @@ export default {
       cursorActive: false,
       moduleOn: false,
       // Puzzle key
-      lighthouseGuessCorrect: false,
-      lighthouseGuessResponse: '',
-      lighthouseAnswer: 'Nina',
+      laraGuessCorrect: false,
+      laraGuessResponse: '',
+      laraAnswer: 'Lara',
       playerCheckedLighthouse: false,
       playerObjective: '',
 
@@ -1159,7 +1480,15 @@ export default {
       checkedHaveWordsForLara: '', /* 🤝 Dependency final step for v-if */
       checkedSendTestingRouteRefresh: '', /* 🤝 Dependency final step for v-if */
 
+      /* Chest contents */
+
+      chestContentsRichard: false,
+      chestContentsEarl: false,
+      chestContentsAlvin: false,
+      chestContentsLucien: false,
+
       /* headstones */
+      
       headstoneOne: false,
       headstoneTwo: false,
       headstoneThree: false,
@@ -1367,8 +1696,6 @@ export default {
         /* Key item and event triggers */
 
         this.checkHaveGotSeenGraveyard();
-        this.gotSeenGraveyard = true;
-        this.$emit('got-seen-graveyard');
         
         /* functional necesscities */
 
@@ -1400,7 +1727,6 @@ export default {
         this.checkHaveKeyItemDagger();
         this.checkHaveBedroomKey();
         this.checkHaveGotSeenGallery();
-        this.checkHaveVisitedDiningRoom();
         this.checkHaveVisitedStudy();
         this.checkHaveVisitedBedroom();
         this.checkHaveGotSeenLockedChest();
@@ -1456,6 +1782,7 @@ export default {
         if (this.mansionDiningModule == true || 
         this.mansionGreenhouseModule == true
         ) {
+          this.checkHaveVisitedDiningRoom();
           this.moduleOn = false;
           this.mansionFloorOneModule = false;
           this.mansionDiningModule = false;
@@ -1508,12 +1835,6 @@ export default {
         this.mansionBedroomDoneModule = false;
       },
       showMansionGreenhouseModule() {
-        /* Key item and event triggers */
-        
-        this.visitedGreenhouse = true;
-        this.gotBedroomKey = true;
-        this.$emit('got-bedroom-key');
-        
         /* functional necesscities */
         
         this.moduleOn = true;
@@ -1531,7 +1852,16 @@ export default {
         this.mansionBedroomLaraIntroModule = false;
         this.mansionBedroomLaraDaggerModule = false;
         this.mansionBedroomDoneModule = false;
-      },
+
+        /* Key item and event triggers */
+
+        this.visitedGreenhouse = true;
+        
+        if (this.visitedDiningRoom === true) {
+        this.$emit('got-bedroom-key');
+        this.gotBedroomKey = true;
+      }
+    },
       showMansionFloorTwoModule() {
         if (
           this.mansionStudyModule == true || 
@@ -1553,6 +1883,7 @@ export default {
           this.mansionBedroomLaraIntroModule = false;
           this.mansionBedroomLaraDaggerModule = false;
           this.mansionBedroomDoneModule = false;
+          this.laraGuessResponse = ''
           setTimeout(() => {
             this.moduleOn = true;
             this.mansionFloorTwoModule = true;
@@ -1699,9 +2030,9 @@ export default {
         this.mansionBedroomDoneModule = false;
 
         if(this.visitedBedroom == true && this.gotBedroomKey == true) {
-          this.secondFloorDoor = "Bedroom";
+          this.secondFloorDoor = "The bedroom";
         } else {
-          this.secondFloorDoor = "Ornate door";
+          this.secondFloorDoor = "Wooden door";
         }
       },
       showMansionBedroomLaraIntroModule() {
@@ -1794,22 +2125,73 @@ export default {
         this.mansionBedroomLaraIntroModule = false;
         this.mansionBedroomLaraDaggerModule = false;
         this.mansionBedroomDoneModule = false;
+        this.laraGuessResponse = '';
+        this.headstoneOne = false;
+        this.headstoneTwo = false;
+        this.headstoneThree = false;
+        this.headstoneFour = false;
+        this.headstoneFive = false;
+        this.headstoneSix = false;
+        this.headstoneSeven = false;
+        this.headstoneEight = false;
+        this.headstoneNine = false;
+        this.headstoneTen = false;
+        this.headstoneEleven = false;
+        this.headstoneTwelve = false;
+        this.headstoneThirteen = false;
+        this.headstoneFourteen = false;
+        this.headstoneFifteen = false;
       },
         handleCursorHover(s) {
         this.hover = s;
         this.cursorActive = s;
         // console.log('hover check');
       },
-      puzzleGuessCheck(event) {
+      puzzleGuessCheckLara(event) {
         console.log(event.toLowerCase())
-        if(event.toLowerCase()===this.lighthouseAnswer.toLowerCase()) {
-          this.lighthouseGuessCorrect = true
-          this.lighthouseGuessResponse = 'The lock clicks open.'
-          this.$emit('get-unlocked-sound');
+        if(event.toLowerCase()===this.laraAnswer.toLowerCase()) {
+          this.laraGuessCorrect = true
+          this.laraGuessResponse = 'yes! that\'s it.'
+          // this.$emit('get-unlocked-sound');
         } else {
-          this.lighthouseGuessResponse = 'Nothing happens.'
-          this.lighthouseGuessCorrect = false
-          this.$emit('get-chain-sound');
+          this.laraGuessResponse = 'hmm, that\'s not right.'
+          this.laraGuessCorrect = false
+          // this.$emit('get-chain-sound');
+        }
+      },
+
+      /* unlocked chest contents */
+      
+      chestContents(s) {
+        if (s === 1 && this.chestContentsRichard === false) {
+          this.chestContentsRichard = true
+          this.chestContentsEarl = false
+          this.chestContentsAlvin = false
+          this.chestContentsLucien = false
+        } else if (s === 2 && this.chestContentsEarl === false) {
+          this.chestContentsEarl = true
+          this.chestContentsRichard = false
+          this.chestContentsAlvin = false
+          this.chestContentsLucien = false
+        } else if (s === 3 && this.chestContentsAlvin === false) {
+          this.chestContentsAlvin = true
+          this.chestContentsRichard = false
+          this.chestContentsEarl = false
+          this.chestContentsLucien = false
+        } else if (s === 4 && this.chestContentsLucien === false) {
+          this.chestContentsLucien = true
+          this.chestContentsRichard = false
+          this.chestContentsEarl = false
+          this.chestContentsAlvin = false
+        } else if (s === 1 && this.chestContentsRichard === true) { 
+          this.chestContentsRichard = false
+          console.log('toggle off!')
+        } else if (s === 2 && this.chestContentsEarl === true) { 
+          this.chestContentsEarl = false
+        } else if (s === 3 && this.chestContentsAlvin === true) { 
+          this.chestContentsAlvin = false
+        } else if (s === 4 && this.chestContentsLucien === true) { 
+          this.chestContentsLucien = false
         }
       },
 
@@ -1857,6 +2239,8 @@ export default {
           this.headstoneTwelve = true
         } else if (s === 13) {
           this.headstoneThirteen = true
+          this.gotSeenGraveyard = true;
+          this.$emit('got-seen-graveyard');
         } else if (s === 14) {
           this.headstoneFourteen = true
         } else if (s === 15) {
