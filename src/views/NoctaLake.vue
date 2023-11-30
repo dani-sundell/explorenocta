@@ -249,7 +249,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
                 There's a trail of footprints in the sand here, you notice. 
                 Peering longer at the prints, you can see the shoes are simple 
                 soles, with only a short heel and no distinctive markings. These 
-                don't look anything like the hiking boots your friend was wearing. 
+                don't look anything like the hiking boots Rachel was wearing. 
                 Who could they belong to? The trail wanders into the nearby woods.
               </template>
 

@@ -11,96 +11,12 @@
   - 🤖 QA setting, Change for build
 
   TO-DOs:
-  ☑️ Write splash page intro
-  ☑️ Write all Journal entries
-
-  ⬛️ Implement content for Woods
-      ⬛️ Unlocked woods
-      ⬛️ Cabin intro
-      ⬛️ Witch intro
-      ⬛️ Witch quiz (x4 questions)
-      ⬛️ End scene
-  ⬛️ Finish Woods JS chain
-  
   ⬛️ Fix mobile cpastone 
   ⬛️ add contact info to credits
-
-  
-  ☑️ Fix anchor divider illio
-  ☑️ Revisie lake illustration
-      ☑️ Footprints and bouy on Lake
-  ☑️ Revisie town illustration
-      ☑️ Newspaper on Town
-  ☑️ Revisie woods illustration
-  ☑️ Upload new illustrations
   ⬛️ Swap out MCAD hosted images
-
-  ------------- completed -------------
-
-    ☑️ Implement content for Town
-      ☑️ Manor flr 2
-      ☑️ Manor study
-      ☑️ Manor study wall
-      ☑️ Manor chest locked
-      ☑️ Manor chest unlocked
-      ☑️ letters (x2)
-      ☑️ map (need a plot reason for this)
-      ☑️ Graves
-  ☑️ Finish Town JS chain
-  
-
-  ☑️ Revise Splash page
-      ☑️ Main page 
-      ☑️ Links
-      ☑️ Disclaimer Page
-      ☑️ Intro Page
-      ☑️ Add button sound effects
-      ☑️ Music
-  ☑️ Add Credits Page
-  ☑️ Implement content for remaining Lighthouse chain
-  ☑️ Implement content for Lake
-  ☑️ Migrate to W3 hosting
-
-
-  JOURNAL TO-DOs:
   ⬛️ Add mute journal button
-  ☑️ Journal entries from all areas (Add to new journal CSS)
-  ☑️ Journal entry completed CSS
-  ☑️ Make sure journal notifs only fire once (working example on sendSeenBoatTrigger)
-  ☑️ Assign a dot location to each journal entry trigger (done for sendSeenBoatTrigger)
-
- 
-  LOWER PRIORITY TO-DOs:
-  ☑️ Add graveyard interaction (div in module with flexbox and grave icons for each that pop open a v-if)
-  ☑️ Adjust Lara interaction to Puzzle script
   ⬛️ Add new sounds
   ⬛️ New illustration for the gallery wall (I don't have time to add this but it would be cool)
-  ☑️ Adjust illustrations
-    ☑️ Golden color on Lighthouse
-
- 
-    REMINDERS:
-      PROPS:
-      - Something happens on child page ➡️ `$emit(got-milk)` 
-      - Add that emit to 'router view' with a function name that fires when that thing happens on the other page 
-        EX:
-          @got-milk="sendMilkEmit"
-      - if that info needs to go to another child page:
-        -- Add new variable "sendMilk = false"
-        -- Add that variable to the function in step 2, set to true
-          EX:
-            sendMilkEmit(){
-              this.sendMilk = true
-            }
-
-        -- Add a new prop to component & send the variable to that prop
-          EX:
-          :have-milk = "`${sendMilk}`" 
-
-        -- Add prop to child page 
-          EX:
-            haveMilk: Boolean
-
  -->
 
 <script setup>
@@ -374,6 +290,9 @@ import ContentModalX from '@/components/ContentModalX.vue'
                           Search your surroundings and find your friend
                         </p>
                     </div>
+                    <div class="journal--get-help">
+                          <a href="mailto:hello@daniellesundell.com">Help & bug reports</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -386,6 +305,7 @@ import ContentModalX from '@/components/ContentModalX.vue'
             -->
 
         <router-view v-slot="{ Component }"
+        @player-has-won="playerWonTheGameTrigger"
         @toggle-wind-sounds="receiveWindSounds"
         @toggle-wind-sounds-off="killWindSounds"
         @toggle-wood-sounds="receiveWoodSounds"
@@ -463,6 +383,7 @@ import ContentModalX from '@/components/ContentModalX.vue'
               :have-seen-spyglass = "`${testingString}`" 
               :have-key-item-knife = "`${testingString}`"
               :send-testing-route-refresh = "testingRouteRefreshData" 
+              :player-won-the-game = "sendPlayerWonTheGame"
               />
             
               <!-- 👋 Edit this ⬆️ -->
@@ -487,7 +408,7 @@ import ContentModalX from '@/components/ContentModalX.vue'
 </template>
 
 <style>
-@import "@/assets/main.css";
+@import "./assets/main.css";
 /* router transition styles */
 .fade-enter-active,
 .fade-leave-active {
@@ -593,6 +514,7 @@ export default {
   },
   data() {
     return {
+      sendPlayerWonTheGame: false,
       audio: false,
       soundOn: false,
       soundOff: true,
@@ -708,6 +630,10 @@ export default {
     }
   },
   methods: {
+    playerWonTheGameTrigger() {
+      this.sendPlayerWonTheGame = true
+    },
+
     /* Wind sound intervals ⬇️ */
     receiveWindSounds() {
       this.playWindSounds = true
@@ -1246,6 +1172,11 @@ export default {
         this.audioToggle()
         this.audioToggle()
         this.hideUI = false
+      } else if (this.$route.name === 'credits' && this.sendPlayerWonTheGame === true) {
+        console.log(this.sendPlayerWonTheGame, 'win????')
+        this.playSplashMusic = true
+        this.audioToggle()
+        this.audioToggle()
       } else {
         return
       }

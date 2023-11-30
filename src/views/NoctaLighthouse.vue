@@ -208,7 +208,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             >
               <template #body--content--1> 
                 <p>
-                  You call your friend’s name up into the darkness, your timid voice echoing 
+                  You call Rachel’s name up into the darkness, your timid voice echoing 
                   back hollow in your ears. There’s no reply, but you can see a light at the 
                   top of the spiral stairs that beckons you up.
                 </p>
@@ -393,7 +393,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
                   The lighthouse neighbors a small, lonely keeper’s house. The exterior is faded and brittle as the dehydrated planks splinter and crack along the path of the wood grain. The breeze whistles through the shattered panes of cloudy glass. Your skin prickles from the chill when you notice something hanging between the shards of broken glass. 
                 </p>
                 <p>
-                  Taking a closer look, you pluck what appears to be the thick jersey cotton of a red garment. Though clearly ripped away from the rest of the fabric, it’s apparent this item hasn’t been here long. Wasn’t your friend wearing a red hoodie when you last saw them?
+                  Taking a closer look, you pluck what appears to be the thick jersey cotton of a red garment. Though clearly ripped away from the rest of the fabric, it’s apparent this item hasn’t been here long. Wasn’t Rachel wearing a red hoodie when you last saw her?
                 </p>
               </template>
 

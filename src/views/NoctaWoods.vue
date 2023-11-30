@@ -123,7 +123,7 @@ import PuzzleScript from '../components/PuzzleScript.vue'
                   You see the light bleeding through the windows of a small cabin, drowning in a sea of hungry moss and vines. 
                   Yet, you find no comfort in this light. For the numerous collection of lit candles signifies something too 
                   terrifying to ignore: something is in the cabin and they're waiting for you. You know this by the sight of 
-                  your friend's crimson sweatshirt — dangling by a single nail plunged through the tip of the hood into the cabin's 
+                  Rachel's crimson sweatshirt — dangling by a single nail plunged through the tip of the hood into the cabin's 
                   front door. 
                 </p>
               </template>
@@ -258,13 +258,13 @@ import PuzzleScript from '../components/PuzzleScript.vue'
                   "It cannot be amended. But it can be avenged. Justice can be served. And you will help me."
                 </p>
                 <p>
-                  Your eyes grow wide as she says this, the knife shifting as your grip tigethens around its hilt. 
+                  Your eyes grow wide as she says this, the knife shifting as your grip tightens around its hilt. 
                 </p>
                 <p class="type-secondary type--quotations--small">
-                  "The price I have paid to live to see my vengence wrought is silence. I cannot speak the truth to you."
+                  "The price I have paid to live to see my vengeance wrought is silence. I cannot speak the truth to you."
                 </p>
                 <p>
-                  The woman points a waivering finger at you, the yellowed-nail as sharp and long as a talon. You swallow hard, an anxious twist gnawing mercilessly at your stomach. 
+                  The woman points a wavering finger at you, the yellowed-nail as sharp and long as a talon. You swallow hard, an anxious twist gnawing mercilessly at your stomach. 
                 </p>
                 <p class="type-secondary type--quotations--small">
                   "But, if you speak the truth before Rachel's corpse, you will live. And I will be free."
@@ -300,52 +300,282 @@ import PuzzleScript from '../components/PuzzleScript.vue'
             bigImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/danger.jpg"
             inlineImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/notice.jpg"
             :renderDecision1="true"
-            :renderDecision2="false"
-            :renderDecision3="false"
+            :renderDecision2="true"
+            :renderDecision3="true"
             :renderChecker="false"
             >
-              <template #body--content--1> 
+              <template #body--content--1 v-if="!GameOver"> 
                 <p>
-                  The woman bares her teeth in a sinister grimance you think was meant to be a smile, but it brings no comfort, rendering your skin shivering with terror.
+                  The woman bares her teeth in a sinister grimace you think was meant to be a smile, but it brings no comfort, rendering your skin shivering with terror.
                 </p>
                 <p class="type-secondary type--quotations--small">
                   "Good. Now, tell me of the Lake. What is its truth?"
                 </p>
-                <p>
-                  The woman turns back to you, her eyes cold and bitter as her lips move within a severe sneer of hatred. 
-                </p>
-                <p class="type-secondary type--quotations--small">
-                  "It cannot be amended. But it can be avenged. Justice can be served. And you will help me."
-                </p>
-                <p>
-                  Your eyes grow wide as she says this, the knife shifting as your grip tigethens around its hilt. 
-                </p>
-                <p class="type-secondary type--quotations--small">
-                  "The price I have paid to live to see my vengence wrought is silence. I cannot speak the truth to you."
-                </p>
-                <p>
-                  The woman points a waivering finger at you, the yellowed-nail as sharp and long as a talon. You swallow hard, an anxious twist gnawing mercilessly at your stomach. 
-                </p>
-                <p class="type-secondary type--quotations--small">
-                  "But, if you speak the truth before Rachel's corpse, you will live. And I will be free."
-                </p>
-                <p>
-                  Her finger falls away, but — far worse — she begins to approach you, and your feet began drifting backwards until your back is square against the wall.  
-                </p>
-                <p class="type-secondary type--quotations--small">
-                  "If you do not, I shall lead another down the path you followed and they will tell it true in your stead."
-                </p>
-                <p>
-                  Your head spins as the woman's sharp scent fills your lungs. You realize it was she who led you both here, who had been instructing you to find all the pieces 
-                  lying around the town. Every cell in your body is screaming not to trust the old woman's word, but what choice do you have?  
+                <p style="text-align: center;" v-if="CabinWrongAnswer">
+                  <div class="span-red type--wrong--answer type-secondary">Wrong.</div>
+                  Try again. Err once more and death will befall you.
                 </p>
               </template>
 
-              <template #decision--1><div @click="showCabinIntroModule(true)" class="module--decision--type type--uppercase--small">Nod in agreement</div></template>
+              <template #body--content--2 v-if="GameOver">
+                <p>
+                </p>
+                <p class="span-red type-secondary type--reaction">
+                  You are dead.
+                </p>
+              </template>
 
-              <template #decision--2><div @click="hideModule" class="module--decision--type type--uppercase--small">leave</div></template>
+              <template #decision--1><div @click="playerQuizGuessLake(1)" class="module--decision--type type--uppercase--small">It's full of smelly fish</div></template>
+
+              <template #decision--2><div @click="playerQuizGuessLake(2)" class="module--decision--type type--uppercase--small">A beast lurks in the waters</div></template>
               
-              <template #decision--3><div class="module--decision--type type--uppercase--small">give up</div></template>
+              <template #decision--3><div @click="playerQuizGuessLake(1)" class="module--decision--type type--uppercase--small">It's the town's most important commodity</div></template>
+
+          </ContentModal>
+          
+          <ContentModal
+            v-if="CabinTownModule"
+            key="CabinTownModule"
+            title="the cabin"
+            :renderBigImg="false"
+            :renderInlineImg="false"
+            :renderHeadline="true"
+            bigImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/danger.jpg"
+            inlineImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/notice.jpg"
+            :renderDecision1="true"
+            :renderDecision2="true"
+            :renderDecision3="true"
+            :renderChecker="false"
+            >
+              <template #body--content--1 v-if="!GameOver"> 
+                <p>
+                  The woman seems satisfied with your answer, but she cares to elaborate. 
+                </p>
+                <p class="type-secondary type--quotations--small">
+                  "You have seen her then? Poor creature."
+                </p>
+                <p>
+                  She turns towards the firelight for a moment, her eyes swimming with a mist — you can't say if it's due to her advanced age or some kind of emotion brewing.   
+                </p>
+                <p class="type-secondary type--quotations--small">
+                  "What else would she feast on but men, when it was men who emptied the night salmon in hordes? Now the lake is but a shell, a casket where the sweet beast will slowly rot."
+                </p>
+                <p>
+                  Her head shakes, the gray frizz rattling as she wheezes out a labored sigh.   
+                </p>
+                <p class="type-secondary type--quotations--small">
+                  "Now for the Town. What do you know?"
+                </p>
+
+                <p style="text-align: center;" v-if="CabinWrongAnswer">
+                  <div class="span-red type--wrong--answer type-secondary">Wrong.</div>
+                  Try again. Err once more and death will befall you.
+                </p>
+              </template>
+
+              <template #body--content--2 v-if="GameOver">
+                <p>
+                </p>
+                <p class="span-red type-secondary type--reaction">
+                  You are dead.
+                </p>
+              </template>
+
+              <template #decision--1><div @click="playerQuizGuessLake(2)" class="module--decision--type type--uppercase--small">Lara was murdered by Lucien's hand</div></template>
+
+              <template #decision--2><div @click="playerQuizGuessLake(1)" class="module--decision--type type--uppercase--small">Generations of Duguays governed it</div></template>
+              
+              <template #decision--3><div @click="playerQuizGuessLake(1)" class="module--decision--type type--uppercase--small">Lara was murdered by the housekeeper's hand</div></template>
+
+          </ContentModal>
+
+          <ContentModal
+            v-if="CabinLighthouseModule"
+            key="CabinLighthouseModule"
+            title="the cabin"
+            :renderBigImg="false"
+            :renderInlineImg="false"
+            :renderHeadline="true"
+            bigImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/danger.jpg"
+            inlineImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/notice.jpg"
+            :renderDecision1="true"
+            :renderDecision2="true"
+            :renderDecision3="true"
+            :renderChecker="false"
+            >
+              <template #body--content--1 v-if="!GameOver"> 
+                <p>
+                  The crone studies you silently, her hands knotted behind her back as her face reflects a severe stillness, almost reverent in its fealty. A moment later, she nods. 
+                </p>
+                <p class="type-secondary type--quotations--small">
+                  "Yes, you've met the daughter of the lake. Pulled the dagger from her innocent heart. Would that I had done it myself if not for my arcane restriction."
+                </p>
+                <p>
+                  You sense a personal touch to her tone here that she lacked when speaking of the lake's beast. The old woman had a fondness for Lara, though you cannot say who 
+                  the daughter of the lake might have been to her.   
+                </p>
+                <p class="type-secondary type--quotations--small">
+                  "She was destroyed by the jealousy of a savage man and his vile heart. Her only crime was a refusal to love a patriarch as cruel as he, 
+                  and it cost her everything. Perhaps, her soul will now know peace with his grandfather's blade finally pulled free from her ribs."
+                </p>
+                <p>
+                  A longing touches her voice. You wonder if the crone is the jealous one now — thirsty for the peace that she speaks of. Her eyes 
+                  flicker back towards you as she addresses you once more. You have another question to answer.
+                </p>
+
+                <p class="type-secondary type--quotations--small">
+                  "Now speak on these woods. What is their truth?"
+                </p>
+
+                <p style="text-align: center;" v-if="CabinWrongAnswer">
+                  <div class="span-red type--wrong--answer type-secondary">Wrong.</div>
+                  Try again. Err once more and death will befall you.
+                </p>
+              </template>
+
+              <template #body--content--2 v-if="GameOver">
+                <p>
+                </p>
+                <p class="span-red type-secondary type--reaction">
+                  You are dead.
+                </p>
+              </template>
+
+              <template #decision--1><div @click="playerQuizGuessLake(1)" class="module--decision--type type--uppercase--small">A snowstorm killed the keepers</div></template>
+
+              <template #decision--2><div @click="playerQuizGuessLake(1)" class="module--decision--type type--uppercase--small">Kraver was consumed by a monster that lives in the light</div></template>
+              
+              <template #decision--3><div @click="playerQuizGuessLake(2)" class="module--decision--type type--uppercase--small">Falker was consumed by a monster that lives in the light</div></template>
+
+          </ContentModal>
+
+          <ContentModal
+            v-if="CabinWoodsModule"
+            key="CabinWoodsModule"
+            title="the cabin"
+            :renderBigImg="false"
+            :renderInlineImg="false"
+            :renderHeadline="true"
+            bigImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/danger.jpg"
+            inlineImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/notice.jpg"
+            :renderDecision1="false"
+            :renderDecision2="true"
+            :renderDecision3="false"
+            :renderChecker="false"
+            >
+              <template #body--content--1 v-if="!GameOver"> 
+                <p>
+                  The old woman regards you with a look of what could be...hope. You're doing well. You may soon see the light of a new day. 
+                  But it quickly melts away with a bitter curse cried from her lips. She exclaims so loudly and violently that you find yourself 
+                  flinching at the sound, silently wondering if you have made a grave error with your answer.
+                </p>
+
+                <p>
+                  A moment later, however, it becomes clear that the woman curses not at you, but at the cruel fate that befell the keeper’s apprentice.
+                </p>
+
+                <p class="type-secondary type--quotations--small">
+                  "Oh, my son. My poor son."
+                </p>
+
+                <p>
+                  Her voices quivers with fury. In her rasped delivery, the ache for this injustice feels ancient, like an exhumed tomb finally seeing the light of day.
+                </p>
+
+                <p class="type-secondary type--quotations--small">
+                  "That terrible ghoul that ate my son."
+                </p>
+                
+                <p>
+                  She nearly spits the words out at you, her hatred billowing out of her lips against the wavering of her tired lungs. She takes a moment to catch her breath, and,  
+                  in the seconds of respite, it seems to damper her anger. 
+                </p>
+                
+                <p class="type-secondary type--quotations--small">
+                  "Yet, do not blame that crazed man — he was lost long before that terrible winter — his mind 
+                  rendered pulp by the elusive phantom of Nina. Year after year he watched her from above, dragging the wreckage of innumerable ships to the 
+                  abyss with none to tell, none to see. It would make anyone go mad. It was Lucien that sentenced my boy to die, trapped in isolation with that 
+                  starving creature and his violent axe."
+                </p>
+                
+                <p>
+                  The woman turns away from you to ask her final question, her voice ringing quieter in your ears as the fire dances over the folds of her freckled skin.  
+                </p>
+
+                <p class="type-secondary type--quotations--small">
+                  "Now speak on these woods. What is their truth?"
+                </p>
+
+                <p style="text-align: center;" v-if="CabinWrongAnswer">
+                  <div class="span-red type--wrong--answer type-secondary">Wrong.</div>
+                  Try again. Err once more and death will befall you.
+                </p>
+              </template>
+
+              <template #body--content--2 v-if="GameOver">
+                <p>
+                </p>
+                <p class="span-red type-secondary type--reaction">
+                  You are dead.
+                </p>
+              </template>
+
+              <template #decision--1><div @click="playerQuizGuessLake(1)" class="module--decision--type type--uppercase--small">It's full of smelly fish</div></template>
+
+              <template #decision--2><div @click="playerQuizGuessLake(2)" class="module--decision--type type--uppercase--small">A old hag was chased down by the Sheriff here</div></template>
+              
+              <template #decision--3><div @click="playerQuizGuessLake(1)" class="module--decision--type type--uppercase--small">It's the town's most important commodity</div></template>
+
+          </ContentModal>
+          
+          <ContentModal
+            v-if="CabinWinningModule"
+            key="CabinWinningModule"
+            title="the cabin"
+            :renderBigImg="false"
+            :renderInlineImg="false"
+            :renderHeadline="true"
+            bigImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/danger.jpg"
+            inlineImg="https://dsundell.studio.mcad.edu/design-studio/nocta/https://dsundell.studio.mcad.edu/design-studio/nocta/imgs/notice.jpg"
+            :renderDecision1="true"
+            :renderDecision2="false"
+            :renderDecision3="false"
+            :renderChecker="false"
+            >
+              <template #body--content--1 v-if="!GameOver"> 
+                <p>
+                  The fire roars to life, as if stoked by a bundle of fresh, new wood. Yet, neither of you have touched the flames. They blaze excitedly all on their own, 
+                  seemingly in response to your answer. The woman's face is unreadable. You hold your breath as she approaches you on her feeble legs.
+                </p>
+
+                <p class="type-secondary type--quotations--small">
+                  "There is no hag of these woods. Not any longer."
+                </p>
+
+                <p>
+                  She reaches out to you and takes your hand, her grip as weak and light as the brush of a branch in the breeze. 
+                  You hold back a wince, watching the old crone with a wary frown.
+                </p>
+
+                <p class="type-secondary type--quotations--small">
+                  "Let the death of your friend be not in vain. Remember what you know. Remember us. Remember Nocta."
+                </p>
+
+                <p>
+                  Your gaze softens as you realize the woman is letting you leave. You have won her game and your life is your prize. 
+                </p>
+
+                <p class="type-secondary type--quotations--small">
+                  "Go now, child. It is finally my time to rest."
+                </p>
+
+              </template>
+
+              <template #decision--1><div @click="doneWithGame()" class="module--decision--type type--uppercase--small">Leave & don't look back</div></template>
+
+              <template #decision--2><div class="module--decision--type type--uppercase--small">null</div></template>
+              
+              <template #decision--3><div class="module--decision--type type--uppercase--small">null</div></template>
 
           </ContentModal>
 
@@ -423,6 +653,13 @@ export default {
       PathCabinModule: false,
       CabinIntroModule: false,
       CabinLakeModule: false,
+      CabinLighthouseModule: false,
+      CabinTownModule: false,
+      CabinWoodsModule: false,
+      CabinWinningModule: false,
+
+      // cabin answers
+      CabinWrongAnswer: false,
 
       // hover control
       hover: false,
@@ -438,10 +675,47 @@ export default {
 
       // Key events & key items
       gotSeenWoods: false,
+      DeathCount: 0,
+      GameOver: false,
 
     }
   },
   methods: {
+
+    //quiz
+
+    playerQuizGuessLake(s) {
+      console.log(this.DeathCount)
+      if (s === 1 && this.DeathCount < 1) {
+        this.CabinWrongAnswer = true;
+        this.DeathCount++;
+        setTimeout(() => this.CabinWrongAnswer = false, 3500);
+      } else if (s === 2) {
+        this.quizLogicShowModule();
+        this.CabinWrongAnswer = false;
+      } else if (s === 1 && this.DeathCount >= 1) {
+        this.GameOver = true;
+        setTimeout(() => 
+          this.gameOverTrigger(), 
+          4000)
+      }
+    },
+
+    quizLogicShowModule() {
+      if (this.CabinLakeModule === true) {
+        this.showCabinTownModule();
+      } else if (this.CabinLighthouseModule === true) {
+        this.showCabinWoodsModule();
+        // console.log(this.CabinTownModule,'hello')
+      } else if (this.CabinTownModule === true) {
+        this.showCabinLighthouseModule();
+      } else if (this.CabinWoodsModule === true) {
+        this.showCabinWinningModule();
+      }
+    },
+
+
+    //modules
       showPathModule() {
         this.PathModule = true;
         this.moduleOn = true;
@@ -484,11 +758,80 @@ export default {
         this.PathModule = false;
         this.moduleOn = true;
       },
+      showCabinLighthouseModule() {
+        this.CabinLighthouseModule = true;
+        this.CabinTownModule = false;
+        this.CabinWinningModule = false;
+        this.CabinWoodsModule = false;
+        this.CabinLakeModule = false;
+        this.CabinExplainerModule = false;
+        this.CabinIntroModule = false;
+        this.PathCabinModule = false;
+        this.PathUnlockedModule = false;
+        this.PathModule = false;
+        this.moduleOn = true;
+      },
+      showCabinTownModule() {
+        this.CabinTownModule = true;
+        this.CabinWinningModule = false;
+        this.CabinWoodsModule = false;
+        this.CabinLighthouseModule = false;
+        this.CabinLakeModule = false;
+        this.CabinExplainerModule = false;
+        this.CabinIntroModule = false;
+        this.PathCabinModule = false;
+        this.PathUnlockedModule = false;
+        this.PathModule = false;
+        this.moduleOn = true;
+      },
+      showCabinWoodsModule() {
+        this.CabinTownModule = false;
+        this.CabinWinningModule = false;
+        this.CabinWoodsModule = true;
+        this.CabinLighthouseModule = false;
+        this.CabinLakeModule = false;
+        this.CabinExplainerModule = false;
+        this.CabinIntroModule = false;
+        this.PathCabinModule = false;
+        this.PathUnlockedModule = false;
+        this.PathModule = false;
+        this.moduleOn = true;
+      },
+      showCabinWinningModule() {
+        this.$emit('player-has-won')
+        this.CabinTownModule = false;
+        this.CabinWinningModule = true;
+        this.CabinWoodsModule = false;
+        this.CabinLighthouseModule = false;
+        this.CabinLakeModule = false;
+        this.CabinExplainerModule = false;
+        this.CabinIntroModule = false;
+        this.PathCabinModule = false;
+        this.PathUnlockedModule = false;
+        this.PathModule = false;
+        this.moduleOn = true;
+      },
       hideModule() { 
+        this.CabinTownModule = false;
+        this.CabinWinningModule = false;
+        this.CabinWoodsModule = false;
+        this.CabinLighthouseModule = false;
+        this.CabinLakeModule = false;
+        this.CabinExplainerModule = false;
+        this.CabinIntroModule = false;
         this.PathCabinModule = false;
         this.PathUnlockedModule = false;
         this.PathModule = false;
         this.moduleOn = false;
+        this.DeathCount = 0;
+        this.GameOver = false;
+      },
+      gameOverTrigger() {
+        this.hideModule()
+        this.$router.push({ name: 'woods' })
+      },
+      doneWithGame() {
+        this.$router.push({ name: 'credits' })
       },
       handleCursorHover(s) {
         this.hover = s;
